@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 
@@ -18,20 +19,23 @@ public class userLoginServlet extends HttpServlet {
         response.setContentType("text/html;charset=utf-8");
         String Uname = request.getParameter("Uname");
         String Upwd = request.getParameter("Upwd");
-        String result ="1";
-        System.out.println(result);
+        String result = " ";
+
 
         User user = UserService.searchUserByName(Uname);
-            if (user==null){ // 代表没查询到用户
-                result = "false";
-            }else {
-                if (Upwd.equals(user.getUpwd())){
-                    result = "ture";
-                }else{
-                    result = "false";
-                }
-        }
+//        System.out.println(user.getUpwd());
+        if (null == user) { // 代表没查询到用户
+            result = "false";
+        } else {
+            if (Upwd.equals(user.getUpwd())) {
+                HttpSession session = request.getSession();
+                session.setAttribute("user", user);
+                result = "ture";
 
+            } else {
+                result = "false";
+            }
+        }
 
 
         response.getWriter().write(result);

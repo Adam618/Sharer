@@ -74,6 +74,7 @@ public class UsersDao {
 
     //通过用户Uname查询用户信息
     public static User searchUserByName(String name){
+
         String sql = "select * from Users where Uname = ?";
         PreparedStatement pst;
         //获取preparedStatement

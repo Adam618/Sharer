@@ -35,6 +35,7 @@ public class User {
         this.setUphone(Uphone);
         this.setUpwd(Upwd);
     }
+
     public int getUid() {
         return uid;
     }
@@ -114,4 +115,6 @@ public class User {
     public void setUwords(String uwords){
         this.uwords = uwords;
     }
+
+
 }

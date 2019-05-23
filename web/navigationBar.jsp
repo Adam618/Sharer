@@ -31,7 +31,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="#">
-                        <img alt="Brand" src="profilePicture/logo.jpg" id="logo">
+                        <img alt="Brand" src="profilePicture/logo_home.png" id="logo">
                     </a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->

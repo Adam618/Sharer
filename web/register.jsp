@@ -194,11 +194,12 @@
                                 }
 
                             });
+                    // 重置表单验证
+                    $('#loginBtn').click(function () {
+                        $('#form').data('bootstrapValidator').resetForm(true);
+                    });
 
-                });
-                // 重置表单验证
-                $('#loginBtn').click(function () {
-                    $('#form').data('bootstrapValidator').resetForm(true);
+
                 });
 
 

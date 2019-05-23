@@ -56,4 +56,28 @@ public class FanDao {
         }
         return flag;
     }
+
+    public static List<Integer> getFuid(int Uid){
+        List<Integer> list = new ArrayList<>();
+        String sql = "select distinct Fuid from fan where Ffid = ?"; // 获取当前登录用户的idol和自己的id不能重复（Fuid）
+        PreparedStatement pst = DBUtil.getPst(sql);
+        ResultSet set = null;
+        Connection con = null;
+        try {
+            pst.setInt(1,Uid);
+            set = pst.executeQuery();
+            while (set.next()){
+                int Fuid = set.getInt(1);
+                list.add(Fuid);
+            }
+            list.add(Uid);// 添加当前用户的id
+        }catch (SQLException e){
+            e.printStackTrace();
+            System.out.println("getIdol 出错！");
+        }finally {
+            DBUtil.close(con,pst,set);
+        }
+        return list;
+
+    }
 }

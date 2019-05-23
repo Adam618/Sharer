@@ -51,7 +51,7 @@
             margin-right: -4px;
         }
 
-        #login-color,#login-color1 {
+        #login-color, #login-color1 {
             background-color: #ffffff;
             margin-top: 20px
         }
@@ -86,7 +86,7 @@
 <div class="container">
 
     <div class="row ">
-        <div class=" col-md-3 col-md-offset-4 col-sm-5 col-sm-offset-4 " >
+        <div class=" col-md-3 col-md-offset-4 col-sm-5 col-sm-offset-4 ">
             <div class="well" id="login-color">
                 <img src="profilePicture/logo.jpg" class="img-responsive center-block" id="sharer-img">
                 <div id="error"></div>
@@ -111,9 +111,9 @@
 
         </div>
     </div>
-<%--    <div class="row">--%>
-<%--        <div class="well col-md-4 col-md-offset-4 col-sm-5 col-sm-offset-4 col-lg-3 col-lg-offset-4"></div>--%>
-<%--    </div>--%>
+    <%--    <div class="row">--%>
+    <%--        <div class="well col-md-4 col-md-offset-4 col-sm-5 col-sm-offset-4 col-lg-3 col-lg-offset-4"></div>--%>
+    <%--    </div>--%>
 
 </div>
 
@@ -151,34 +151,51 @@
                     }
 
                 });
+        (function () {
+            $('#form').data('bootstrapValidator').resetForm(false);
+        })();
+        <%--var Uname=${'#Uname'}.val();--%>
+        $('#loginBtn').click(function () {
+            if ($('#form').data('bootstrapValidator').isValid()) {
+                $.ajax({
+                    url: "uls",
+                    type: "POST",
+                    data: {Uname: $('#Uname').val(), Upwd: $('#Upwd').val()},
+                    datatype: "text",
+
+                    success: function (result) {
+                        if (result === 'false') {
+                            $('#error').html("  <div class=\"alert alert-warning alert-dismissible in fade\" role=\"alert\">\n" +
+                                "                        <button type=\"button\" class=\"close \" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
+                                "                        <center> 用户名或密码错误！</center>\n" +
+                                "                    </div>");
+                        }else {
+
+                            window.location.href="home.jsp";
+
+                            // 登录成功就跳转页面
+                        }
+
+
+                    },
+                    error: function () {
+                        alert("false")
+                    }
+
+                })
+            }
+
+        });
+
+        // // 重置表单验证
+        // $('#loginBtn').click(function () {
+        //     $('#form').data('bootstrapValidator').resetForm(ture);
+        // });
+
+
 
     });
-    // 重置表单验证
-    <%--var Uname=${'#Uname'}.val();--%>
-    $('#loginBtn').click(function () {
-        if ($('#form').data('bootstrapValidator').isValid()) {
-            $.ajax({
-                url: "ls",
-                type: "POST",
-                data: {Uname: $('#Uname').val(), Upwd: $('#Upwd').val()},
-                datatype: "text",
 
-                success: function (result) {
-                    $('#error').html("  <div class=\"alert alert-warning alert-dismissible in fade\" role=\"alert\">\n" +
-                        "                        <button type=\"button\" class=\"close \" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
-                        "                        <center> 用户名或密码错误！</center>\n" +
-                        "                    </div>");
-                    console.log('result', typeof result);
-                    console.log('result', result);
-                },
-                error: function () {
-                    alert("false")
-                }
-
-            })
-        }
-
-    });
 
 </script>
 </html>

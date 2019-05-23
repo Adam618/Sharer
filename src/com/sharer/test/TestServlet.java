@@ -1,8 +1,13 @@
 package com.sharer.test;
 
 
+import com.alibaba.fastjson.JSON;
 import com.sharer.dao.FanDao;
+import com.sharer.entity.Share;
+import com.sharer.entity.User;
 import com.sharer.service.FanService;
+import com.sharer.service.ShareService;
+import com.sharer.service.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,12 +19,15 @@ import java.util.List;
 
 @WebServlet("/ts")
 public class TestServlet extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int item = Integer.parseInt(req.getParameter("Uid"));
-        List list = FanService.getFan(item);
-        System.out.println(list.size());
-        req.setAttribute("userList",list);
-        req.getRequestDispatcher("userInfo.jsp").forward(req,resp);
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    int Uid = Integer.parseInt(request.getParameter("Uid")) ;
+    int start = Integer.parseInt(request.getParameter("start"));
+       List<Share> shareList =  ShareService.getShareByUid(Uid,start);
+        String json = JSON.toJSON(shareList).toString();
+
+
+
     }
+
+
 }
