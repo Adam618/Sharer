@@ -3,4 +3,16 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-</web-app>
+
+<!--    <filter>-->
+<!--        <description>拦截包含中文参数的post请求，修正请求编码</description>-->
+<!--        <filter-name>encodingFilter</filter-name>-->
+<!--        <filter-class>com.sharer.filter.encodingFilter</filter-class>-->
+<!--    </filter>-->
+<!--    <filter-mapping>-->
+<!--<filter-name>encodingFilter</filter-name>-->
+
+<!--<url-pattern>*</url-pattern>-->
+
+<!--</filter-mapping>-->
+        </web-app>
