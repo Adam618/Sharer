@@ -17,18 +17,15 @@
           crossorigin="anonymous">
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
-<%--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"--%>
-<%--            crossorigin="anonymous"></script>--%>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrapValidator.js"></script>
-<%--    <script--%>
-<%--            src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>--%>
+    <script src="js/dropdown.js"></script>
 
     <style>
         .panel {
             border-radius: 2px
         }
-
+body {background-color: #fafafa}
 
     </style>
 </head>
@@ -39,9 +36,10 @@
         <%--第一列--%>
     </div>
 
-    <div class="col-md-5  col-sm-5 col-xs-10 " style="" id="sharePanel">
-        <div>
-            <div class="row " style="margin-right: 0;margin-left: 0;margin-top: 20px;">
+    <div class="col-md-5  col-sm-5 col-xs-10 " id="sharePanel">
+<%--        发表动态部分开始--%>
+        <div class="row" style="margin-bottom: 40px;background-color:white" >
+            <div  style="margin-right: 0;margin-left: 0;margin-top: 20px;">
                 <form role="form" style="">
                     <div class="form-group">
                         <textarea style="resize: none;" placeholder="有什么新鲜事？" class="form-control " rows="3"></textarea>
@@ -51,24 +49,23 @@
             </div>
 
             <div style="margin-top: -15px">
-                <input style="position: absolute;opacity: 0"  type="file">
-                <img style="float: left;margin-bottom: 50px;margin-left:2px;margin-top: 5px" src="images/图片.png">
-<%--                <div class="btn-group">--%>
-<%--                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--%>
-<%--                        Action <span class="caret"></span>--%>
-<%--                    </button>--%>
-<%--                    <ul class="dropdown-menu">--%>
-<%--                        <li><a href="#">Action</a></li>--%>
-<%--                        <li><a href="#">Another action</a></li>--%>
-<%--                        <li><a href="#">Something else here</a></li>--%>
-<%--                        <li role="separator" class="divider"></li>--%>
-<%--                        <li><a href="#">Separated link</a></li>--%>
-<%--                    </ul>--%>
-<%--                </div>--%>
-                <button type="button" class="btn btn-info" id="loginBtn" style="float: right;margin-top: 3px;margin-right: 3px">发表</button>
+                <input style="position: absolute;opacity: 0;display: none" id="thisFile" type="file">
+                <img onclick="makeThisFile()" style="float: left;margin-left:2px;margin-top: 5px"
+                     id="browse" src="images/图片.png" alt="选择图片">
+                <input type="text" id="showname" style="margin-left: 4px;margin-top: 5px;width: 95px">
+                <button onclick="upload()" type="button" class="btn btn-info btn-sm" id="loginBtn"
+                        style="float: right;margin-top: 5px;margin-right: 3px;">发表
+                </button>
+                <%--                <label for="visibleSelected">可见范围</label>--%>
+                <select id="visibleSelected"
+                        style="float: right;margin-right: 10px;margin-top: 5px;height: 28px;width: 95px">
+
+                    <option selected="selected" value="0">所有人可见</option>
+                    <option value="1">仅自己可见</option>
+                </select>
             </div>
         </div>
-
+  <%--发表动态部分结束--%>
         <%--                        <div class="panel panel-default" style="margin-bottom: 0px">--%>
         <%--                            <!-- Default panel contents -->--%>
         <%--                            <div class="panel-heading" style="background-color: #ffffff">--%>
@@ -109,51 +106,51 @@
 
         <%--                            </div>--%>
         <%--                        </div>--%>
-        <div class="panel panel-default " style="margin-bottom: 0;margin-top: 40px">
-            <!-- Default panel contents -->
-            <div class="panel-heading;" style="background-color: #ffffff;">
-                <%--            用户名、头像部分--%>
-                <div>
-                    <div style="display: inline-block">
-                        <a href="#" class="img-responsive">
-                            <img class="img-circle " src="profilePicture/defaultImg.jpeg"
-                                 style="height: 40px;width: 40px;margin-bottom: 3px"
-                                 alt="用户头像">
-                        </a>
-                    </div>
-                    &nbsp;
-                    <div style="display: inline-block">
-                        <h5> haha</h5>
-                    </div>
-                </div>
+<%--        <div class="panel panel-default " style="margin-bottom: 0;margin-top: 40px">--%>
+<%--            <!-- Default panel contents -->--%>
+<%--            <div class="panel-heading;" style="background-color: #ffffff;">--%>
+<%--                &lt;%&ndash;            用户名、头像部分&ndash;%&gt;--%>
+<%--                <div>--%>
+<%--                    <div style="display: inline-block">--%>
+<%--                        <a href="#" class="img-responsive">--%>
+<%--                            <img class="img-circle " src="profilePicture/defaultImg.jpeg"--%>
+<%--                                 style="height: 40px;width: 40px;margin-bottom: 3px"--%>
+<%--                                 alt="用户头像">--%>
+<%--                        </a>--%>
+<%--                    </div>--%>
+<%--                    &nbsp;--%>
+<%--                    <div style="display: inline-block">--%>
+<%--                        <h5> haha</h5>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
 
-            </div>
-            <%--            动态图片部分--%>
-            <img class="img-responsive " src="profilePicture/test.jpg">
-        </div>
+<%--            </div>--%>
+<%--            &lt;%&ndash;            动态图片部分&ndash;%&gt;--%>
+<%--            <img class="img-responsive " src="profilePicture/test.jpg">--%>
+<%--        </div>--%>
 
-        <%--        点赞、评论、转发部分--%>
-        <div class="panel panel-default">
-            <!-- Default panel contents -->
-            <div class="panel-heading" style="background-color: #ffffff ;">
-                <%--                <div class="feed" id="feed1">--%>
-                <%--            点赞--%>
-                <div class="heart "
-                     style="margin-top: -25px;margin-left: 10px;display: inline-block;position: absolute;z-index: 0;"
-                     id="like1" rel="like"></div>
-                <%--                评论--%>
-                <div style="display: inline-block;margin-top: 3px;margin-left: 35px;position: absolute;z-index: 1"><img
-                        src="images/评论%20(2).png"></div>
-                <%--                分享--%>
-                <div style="margin-top:6px;margin-left: 77px"><img src="images/分享%20(3).png"></div>
-                <div class="likeCount" style="width: 30px;margin-left: -8px;margin-top: 2px" id="likeCount1">14</div>
+<%--        &lt;%&ndash;        点赞、评论、转发部分&ndash;%&gt;--%>
+<%--        <div class="panel panel-default">--%>
+<%--            <!-- Default panel contents -->--%>
+<%--            <div class="panel-heading" style="background-color: #ffffff ;">--%>
+<%--                &lt;%&ndash;                <div class="feed" id="feed1">&ndash;%&gt;--%>
+<%--                &lt;%&ndash;            点赞&ndash;%&gt;--%>
+<%--                <div class="heart "--%>
+<%--                     style="margin-top: -25px;margin-left: 10px;display: inline-block;position: absolute;z-index: 0;"--%>
+<%--                     id="like1" rel="like"></div>--%>
+<%--                &lt;%&ndash;                评论&ndash;%&gt;--%>
+<%--                <div style="display: inline-block;margin-top: 3px;margin-left: 35px;position: absolute;z-index: 1"><img--%>
+<%--                        src="images/评论%20(2).png"></div>--%>
+<%--                &lt;%&ndash;                分享&ndash;%&gt;--%>
+<%--                <div style="margin-top:6px;margin-left: 77px"><img src="images/分享%20(3).png"></div>--%>
+<%--                <div class="likeCount" style="width: 30px;margin-left: -8px;margin-top: 2px" id="likeCount1">14</div>--%>
 
-                <div style="margin-left: 15px;margin-top: -20px;float: left"><b>&nbsp;次赞</b></div>
-                <div></div>
-                <%--                            </div>--%>
+<%--                <div style="margin-left: 15px;margin-top: -20px;float: left"><b>&nbsp;次赞</b></div>--%>
+<%--                <div></div>--%>
+<%--                &lt;%&ndash;                            </div>&ndash;%&gt;--%>
 
-            </div>
-        </div>
+<%--            </div>--%>
+<%--        </div>--%>
 
 
     </div>
@@ -196,7 +193,7 @@
                         });
                         console.log('userIn', userInfoList.uname);
                         console.log('userInfoList', userInfoList);
-                        var s1 = "    <div class=\"panel panel-default\" style=\"margin-bottom: 0px\">\n" +
+                        var s1 = "    <div class=\"panel panel-default\" style=\"margin-bottom: 0px;\">\n" +
                             "        <!-- Default panel contents -->\n" +
                             "        <div class=\"panel-heading\" style=\"background-color: #ffffff\">\n" +
                             "            <%--            用户名、头像部分--%>\n" +
@@ -275,6 +272,39 @@
         });
 
     });
+// 展示图片路径
+    function makeThisFile() {
+        $('#thisFile').click();
+    }
+
+    // 当此元素的值发生改变时调用此函数
+    $('#thisFile').change(function () {
+        $('#showname').val($(this).val())
+
+    });
+// 展示图片路径结束
+
+// 上传图片
+function upload() {
+
+    var fakePath= $('#thisFile').val();
+   // var path = fakePath.replace(/fakepath/, "shareData\\shareImg");  // 将虚假路径替换掉
+    // var strFileName = path.substring(fileName.lastIndexOf("\\")+1);
+  $.ajax({
+      url:"uss",
+      type:'POST',
+      async:false,
+      data:{path:path},
+      success:function () {
+          alert("成功！")
+      },
+      error:function () {
+          alert("失败！")
+      }
+  })
+
+}
+
 
 </script>
 </html>

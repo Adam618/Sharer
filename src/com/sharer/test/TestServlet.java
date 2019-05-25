@@ -20,10 +20,8 @@ import java.util.List;
 @WebServlet("/ts")
 public class TestServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    int Uid = Integer.parseInt(request.getParameter("Uid")) ;
-    int start = Integer.parseInt(request.getParameter("start"));
-       List<Share> shareList =  ShareService.getShareByUid(Uid,start);
-        String json = JSON.toJSON(shareList).toString();
+      String path = request.getParameter("path");
+        System.out.println(path);
 
 
 
