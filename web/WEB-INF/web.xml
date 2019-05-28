@@ -4,15 +4,20 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
-<!--    <filter>-->
-<!--        <description>拦截包含中文参数的post请求，修正请求编码</description>-->
-<!--        <filter-name>encodingFilter</filter-name>-->
-<!--        <filter-class>com.sharer.filter.encodingFilter</filter-class>-->
-<!--    </filter>-->
-<!--    <filter-mapping>-->
-<!--<filter-name>encodingFilter</filter-name>-->
+    <filter>
+        <description>拦截包含中文参数的post请求，修正请求编码</description>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>com.sharer.filter.encodingFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
 
-<!--<url-pattern>*</url-pattern>-->
+        <url-pattern>*</url-pattern>
 
-<!--</filter-mapping>-->
-        </web-app>
+    </filter-mapping>
+
+    <context-param>
+        <param-name>path</param-name>
+        <param-value>http://localhost:8080/shareImg/</param-value>
+    </context-param>
+</web-app>

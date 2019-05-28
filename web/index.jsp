@@ -162,16 +162,19 @@
                     type: "POST",
                     data: {Uname: $('#Uname').val(), Upwd: $('#Upwd').val()},
                     datatype: "text",
-
+                    beforeSend: function () {
+                        $("#loginBtn").attr('disabled', true);
+                        $('#loginBtn').text("登录中...");
+                    },
                     success: function (result) {
                         if (result === 'false') {
                             $('#error').html("  <div class=\"alert alert-warning alert-dismissible in fade\" role=\"alert\">\n" +
                                 "                        <button type=\"button\" class=\"close \" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
                                 "                        <center> 用户名或密码错误！</center>\n" +
                                 "                    </div>");
-                        }else {
+                        } else {
 
-                            window.location.href="home.jsp";
+                            window.location.href = "home.jsp";
 
                             // 登录成功就跳转页面
                         }
@@ -180,6 +183,10 @@
                     },
                     error: function () {
                         alert("false")
+                    },
+                    complete: function () {
+                        $("#loginBtn").attr('disabled', false);
+                        $('#loginBtn').text("登录");
                     }
 
                 })
@@ -191,7 +198,6 @@
         // $('#loginBtn').click(function () {
         //     $('#form').data('bootstrapValidator').resetForm(ture);
         // });
-
 
 
     });
