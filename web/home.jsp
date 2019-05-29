@@ -39,13 +39,14 @@
         <%--第一列--%>
     </div>
 
-    <div class="col-md-5  col-sm-5 col-xs-10 " >
+    <div class="col-md-5  col-sm-5 col-xs-10 ">
         <%--        发表动态部分开始--%>
         <div class="row thumbnail" style="margin-bottom: 40px;background-color:white">
             <div style="margin-right: 0;margin-left: 0;margin-top: 20px;">
                 <form role="form" style="">
                     <div class="form-group">
-                        <textarea style="resize: none;" placeholder="有什么新鲜事？" class="form-control" id="Stext" rows="3"></textarea>
+                        <textarea style="resize: none;" placeholder="有什么新鲜事？" class="form-control" id="Stext"
+                                  rows="3"></textarea>
                     </div>
                 </form>
 
@@ -56,7 +57,7 @@
                 <img style="float: left;margin-left:2px;margin-top: 5px"
                      id="browse" src="images/图片.png" alt="选择图片">
                 <input type="text" id="showname" style="margin-left: 4px;margin-top: 5px;width: 95px">
-                <button  type="button" class="btn btn-info btn-sm" id="uploadBtn"
+                <button type="button" class="btn btn-info btn-sm" id="uploadBtn"
                         style="float: right;margin-top: 5px;margin-right: 3px;">发表
                 </button>
                 <%--                <label for="visibleSelected">可见范围</label>--%>
@@ -68,93 +69,58 @@
                 </select>
             </div>
         </div>
-            <div id="sharePanel"></div>
-        <%--发表动态部分结束--%>
-        <%--                        <div class="panel panel-default" style="margin-bottom: 0px">--%>
-        <%--                            <!-- Default panel contents -->--%>
-        <%--                            <div class="panel-heading" style="background-color: #ffffff">--%>
-        <%--                                &lt;%&ndash;            用户名、头像部分&ndash;%&gt;--%>
-        <%--                                <div>--%>
-        <%--                                    <div style="display: inline-block">--%>
-        <%--                                        <a href="#" class="img-responsive">--%>
-        <%--                                            <img class="img-circle" src="profilePicture/defaultImg.jpeg"--%>
-        <%--                                                 style="height: 40px;width: 40px"--%>
-        <%--                                                 alt="用户头像">--%>
-        <%--                                        </a>--%>
-        <%--                                    </div>--%>
-        <%--                                    &nbsp;--%>
-        <%--                                    <div style="display: inline-block">--%>
-        <%--                                        <h5> haha</h5>--%>
-        <%--                                    </div>--%>
-        <%--                                </div>--%>
+        <div id="sharePanel"></div>
+        <%--        发表动态部分结束--%>
 
-        <%--                            </div>--%>
-        <%--                            &lt;%&ndash;            动态部分&ndash;%&gt;--%>
-        <%--                            <img class="img-responsive " src="profilePicture/test.jpg">--%>
-        <%--                        </div>--%>
+<%--        <div class="panel panel-default " style="margin-bottom: 0;margin-top: 40px">--%>
+<%--            <!-- Default panel contents -->--%>
+<%--            <div class="panel-heading;" style="background-color: #ffffff;">--%>
+<%--                &lt;%&ndash;            用户名、头像部分&ndash;%&gt;--%>
+<%--                <div>--%>
+<%--                    <div style="display: inline-block">--%>
+<%--                        <a href="#" class="img-responsive">--%>
+<%--                            <img class="img-circle " src="profilePicture/defaultImg.jpeg"--%>
+<%--                                 style="height: 40px;width: 40px;margin-bottom: 3px"--%>
+<%--                                 alt="用户头像">--%>
+<%--                        </a>--%>
+<%--                    </div>--%>
+<%--                    &nbsp;--%>
+<%--                    <div style="display: inline-block">--%>
+<%--                        <h5> haha</h5>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
 
-        <%--                        &lt;%&ndash;        点赞、评论、转发部分&ndash;%&gt;--%>
-        <%--                        <div class="panel panel-default">--%>
-        <%--                            <!-- Default panel contents -->--%>
-        <%--                            <div class="panel-heading" style="background-color: #ffffff ;">--%>
-        <%--                                &lt;%&ndash;                <div class="feed" id="feed1">&ndash;%&gt;--%>
-        <%--                                <div class="heart " style="margin-top: -25px;margin-left: 10px;display: inline-block;float: left;"--%>
-        <%--                                     id="like1" rel="like"></div>--%>
-        <%--                                <div style="display: inline-block;float: left;margin-left: 35px; margin-top: 3px"><img--%>
-        <%--                                        src="images/评论%20(2).png"></div>--%>
-        <%--                                <div style="margin-left: 12px;margin-top:6px;float: left"><img src="images/分享%20(3).png"></div>--%>
-        <%--                                <div class="likeCount" style="display: inline-block;margin-left: -105px" id="likeCount1">14</div>--%>
-        <%--                                &lt;%&ndash;         block 有换行作用&ndash;%&gt;--%>
-        <%--                                <span style="display: inline-block;margin-top: 10px"><b>&nbsp;次赞</b></span>--%>
-        <%--                                &lt;%&ndash;                </div>&ndash;%&gt;--%>
+<%--            </div>--%>
+<%--            &lt;%&ndash;            动态图片部分&ndash;%&gt;--%>
+<%--            <img class="img-responsive " src="profilePicture/test.jpg">--%>
+<%--        </div>--%>
 
-        <%--                            </div>--%>
-        <%--                        </div>--%>
-        <%--        <div class="panel panel-default " style="margin-bottom: 0;margin-top: 40px">--%>
-        <%--            <!-- Default panel contents -->--%>
-        <%--            <div class="panel-heading;" style="background-color: #ffffff;">--%>
-        <%--                &lt;%&ndash;            用户名、头像部分&ndash;%&gt;--%>
-        <%--                <div>--%>
-        <%--                    <div style="display: inline-block">--%>
-        <%--                        <a href="#" class="img-responsive">--%>
-        <%--                            <img class="img-circle " src="profilePicture/defaultImg.jpeg"--%>
-        <%--                                 style="height: 40px;width: 40px;margin-bottom: 3px"--%>
-        <%--                                 alt="用户头像">--%>
-        <%--                        </a>--%>
-        <%--                    </div>--%>
-        <%--                    &nbsp;--%>
-        <%--                    <div style="display: inline-block">--%>
-        <%--                        <h5> haha</h5>--%>
-        <%--                    </div>--%>
-        <%--                </div>--%>
+<%--        &lt;%&ndash;        点赞、评论、转发部分&ndash;%&gt;--%>
+<%--        <div class="panel panel-default">--%>
+<%--            <!-- Default panel contents -->--%>
+<%--            <div class="panel-heading" style="background-color: #ffffff ;">--%>
+<%--                &lt;%&ndash;                <div class="feed" id="feed1">&ndash;%&gt;--%>
+<%--                &lt;%&ndash;                                    点赞&ndash;%&gt;--%>
+<%--                <div class="heart "--%>
+<%--                     style="margin-top: -25px;margin-left: 10px;display: inline-block;position: absolute;z-index: 0;"--%>
+<%--                     id="like1" rel="like"></div>--%>
 
-        <%--            </div>--%>
-        <%--            &lt;%&ndash;            动态图片部分&ndash;%&gt;--%>
-        <%--            <img class="img-responsive " src="profilePicture/test.jpg">--%>
-        <%--        </div>--%>
+<%--                &lt;%&ndash;                评论&ndash;%&gt;--%>
+<%--                <div style="display: inline-block;margin-top: 3px;margin-left: 35px;position: absolute;z-index: 1"><img--%>
+<%--                        src="images/评论%20(2).png"></div>--%>
 
-        <%--        &lt;%&ndash;        点赞、评论、转发部分&ndash;%&gt;--%>
-        <%--        <div class="panel panel-default">--%>
-        <%--            <!-- Default panel contents -->--%>
-        <%--            <div class="panel-heading" style="background-color: #ffffff ;">--%>
-        <%--                &lt;%&ndash;                <div class="feed" id="feed1">&ndash;%&gt;--%>
-        <%--                &lt;%&ndash;            点赞&ndash;%&gt;--%>
-        <%--                <div class="heart "--%>
-        <%--                     style="margin-top: -25px;margin-left: 10px;display: inline-block;position: absolute;z-index: 0;"--%>
-        <%--                     id="like1" rel="like"></div>--%>
-        <%--                &lt;%&ndash;                评论&ndash;%&gt;--%>
-        <%--                <div style="display: inline-block;margin-top: 3px;margin-left: 35px;position: absolute;z-index: 1"><img--%>
-        <%--                        src="images/评论%20(2).png"></div>--%>
-        <%--                &lt;%&ndash;                分享&ndash;%&gt;--%>
-        <%--                <div style="margin-top:6px;margin-left: 77px"><img src="images/分享%20(3).png"></div>--%>
-        <%--                <div class="likeCount" style="width: 30px;margin-left: -8px;margin-top: 2px" id="likeCount1">14</div>--%>
+<%--                &lt;%&ndash;                分享&ndash;%&gt;--%>
+<%--                <div style="float: right;margin-right: -10px"><img src="images/星星线描%20(1).png"></div>--%>
+<%--&lt;%&ndash;            <div style="float: right;margin-right: -10px"><img src="images/星星_选中.png"></div>&ndash;%&gt;--%>
+<%--                <div style="margin-top:6px;margin-left: 77px"><img src="images/分享%20(3).png"></div>--%>
+<%--                <div class="likeCount" style="width: 30px;margin-left: -8px;margin-top: 2px" id="likeCount1">14</div>--%>
 
-        <%--                <div style="margin-left: 15px;margin-top: -20px;float: left"><b>&nbsp;次赞</b></div>--%>
-        <%--                <div></div>--%>
-        <%--                &lt;%&ndash;                            </div>&ndash;%&gt;--%>
+<%--                <div style="margin-left: 15px;margin-top: -20px;float: left"><b>&nbsp;次赞</b></div>--%>
+<%--                <div></div>--%>
+<%--                &lt;%&ndash;                            </div>&ndash;%&gt;--%>
 
-        <%--            </div>--%>
-        <%--        </div>--%>
+<%--            </div>--%>
+<%--        </div>--%>
 
 
     </div>
@@ -167,7 +133,7 @@
 
 <script>
     var start = 1;
-    var path ="${applicationScope.path}";
+    var path = "${applicationScope.path}";
     $(document).ready(function () {
         // 初始化界面
         created();
@@ -199,6 +165,7 @@
                                 alert("error!")
                             }
                         });
+
 
                         console.log('userInfoList', userInfoList);
                         console.log('shareTest', share.stext)
@@ -239,6 +206,8 @@
                             "                    src=\"images/评论%20(2).png\"></div>\n" +
                             "        <%--                分享--%>\n" +
                             "            <div style=\"margin-top:6px;margin-left: 77px\"><img src=\"images/分享%20(3).png\"></div>\n" +
+                                                          // 收藏
+                            "            <div style=\"float: right;margin-right: -10px;margin-top:-27px\"><img src=\"images/星星线描%20(1).png\"></div>\n" +
                             "            <div class=\"likeCount\" style=\"width: 30px;margin-left: -8px;margin-top: 2px\" id=\"likeCount1\">14</div>\n" +
                             "\n" +
                             "          <div style=\"margin-left: 15px;margin-top: -20px;float: left\"><b>&nbsp;次赞</b></div>\n" +
@@ -298,9 +267,7 @@
         });
 
 
-
 // 展示图片路径结束
-
 
 
 // 当页面开始滚动时就触发此事件
@@ -316,39 +283,38 @@
                 console.log('start' + start);
             }
         });
-  $('#uploadBtn').click( function btu() {
-      // var name=$("#name").val();
-      var Svisable = $('#visibleSelected').val();
-      var file = $("#thisFile")[0].files[0];//新特性，获取文件对象
-      var Stext = $("#Stext").val();
-      var fordata = new FormData();//新特性，得到formData对象，把获取的值扔进去，相当于map
-      // fordata.append("name",name);
-      fordata.append("Svisible",Svisable);
-      fordata.append("Stext",Stext);
-      fordata.append("file", file);
-      console.log(file);
-      console.log('visable',Svisable);
-      $.ajax({
-          url: "uss",
-          data: fordata,
-          cache: false,
-          processData: false, //必须写
-          contentType: false, //必须写
-          type: "post",
-          success: function (data) {
-              console.log("Success")
-          },
-          complete: function () {
-              $("#Stext").val("");
-              $("#showname").val("");
-              $("#sharePanel").html('');
-              created();
-          }
-      })
+        $('#uploadBtn').click(function btu() {
+            start = 1;
+            // var name=$("#name").val();
+            var Svisable = $('#visibleSelected').val();
+            var file = $("#thisFile")[0].files[0];//新特性，获取文件对象
+            var Stext = $("#Stext").val();
+            var fordata = new FormData();//新特性，得到formData对象，把获取的值扔进去，相当于map
+            // fordata.append("name",name);
+            fordata.append("Svisible", Svisable);
+            fordata.append("Stext", Stext);
+            fordata.append("file", file);
+            console.log(file);
+            console.log('visable', Svisable);
+            $.ajax({
+                url: "uss",
+                data: fordata,
+                cache: false,
+                processData: false, //必须写
+                contentType: false, //必须写
+                type: "post",
+                success: function (data) {
+                    console.log("Success")
+                },
+                complete: function () {
+                    $("#Stext").val("");
+                    $("#showname").val("");
+                    $("#sharePanel").html('');
+                    created();
+                }
+            })
 
-  })
-
-
+        })
 
 
     });

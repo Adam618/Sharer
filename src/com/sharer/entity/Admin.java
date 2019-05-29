@@ -2,83 +2,87 @@ package com.sharer.entity;
 
 public class Admin {
 
-    private  int Aid;
-    private String Aname;
-    private String Agender;
-    private String Aemail;
-    private String Aphone;
-    private String Abirth;
-    private String Aimg;
-    private String Apwd;
+    private  int aid;
+    private String aname;
+    private String agender;
+    private String aemail;
+    private String aphone;
+    private String abirth;
+    private String aimg;
+    private String apwd;
+
+    public int getAid() {
+        return aid;
+    }
+
+    public void setAid(int aid) {
+        this.aid = aid;
+    }
+
+    public String getAname() {
+        return aname;
+    }
+
+    public void setAname(String aname) {
+        this.aname = aname;
+    }
+
+    public String getAgender() {
+        return agender;
+    }
+
+    public void setAgender(String agender) {
+        this.agender = agender;
+    }
+
+    public String getAemail() {
+        return aemail;
+    }
+
+    public void setAemail(String aemail) {
+        this.aemail = aemail;
+    }
+
+    public String getAphone() {
+        return aphone;
+    }
+
+    public void setAphone(String aphone) {
+        this.aphone = aphone;
+    }
+
+    public String getAbirth() {
+        return abirth;
+    }
+
+    public void setAbirth(String abirth) {
+        this.abirth = abirth;
+    }
+
+    public String getAimg() {
+        return aimg;
+    }
+
+    public void setAimg(String aimg) {
+        this.aimg = aimg;
+    }
+
+    public String getApwd() {
+        return apwd;
+    }
+
+    public void setApwd(String apwd) {
+        this.apwd = apwd;
+    }
+
+
 
     public Admin(){}
 
     public Admin(String Aname,String Apwd){
-        this.Aname = Aname;
-        this.Apwd = Apwd;
+        this.aname = Aname;
+        this.apwd = Apwd;
     }
 
-    public int getAid() {
-        return Aid;
-    }
 
-    public void setAid(int aid) {
-        Aid = aid;
-    }
-
-    public String getAname() {
-        return Aname;
-    }
-
-    public void setAname(String aname) {
-        Aname = aname;
-    }
-
-    public String getAgender() {
-        return Agender;
-    }
-
-    public void setAgender(String agender) {
-        Agender = agender;
-    }
-
-    public String getAemail() {
-        return Aemail;
-    }
-
-    public void setAemail(String aemail) {
-        Aemail = aemail;
-    }
-
-    public String getAphone() {
-        return Aphone;
-    }
-
-    public void setAphone(String aphone) {
-        Aphone = aphone;
-    }
-
-    public String getAbirth() {
-        return Abirth;
-    }
-
-    public void setAbirth(String abirth) {
-        Abirth = abirth;
-    }
-
-    public String getAimg() {
-        return Aimg;
-    }
-
-    public void setAimg(String aimg) {
-        Aimg = aimg;
-    }
-
-    public String getApwd() {
-        return Apwd;
-    }
-
-    public void setApwd(String apwd) {
-        Apwd = apwd;
-    }
 }

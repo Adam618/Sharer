@@ -1,79 +1,76 @@
 package com.sharer.entity;
 
 public class Share {
-    private int Sid;
-    private int Suid;
-    private String Stext;
-    private String Simg;
-    private String Stime;
-    private int Svisible;
+    private int sid;
+    private int suid;
+    private String stext;
+    private String simg;
+    private String stime;
+    private int svisible;
 
     public String getStime() {
-        return Stime;
+        return stime;
     }
 
     public void setStime(String stime) {
-        Stime = stime;
+        stime = stime;
     }
 
     public  Share(){};
     public Share(int Sid,int Suid,String Stext,String Simg,String Stime,int Svisible){
-        this.Sid = Sid;
-        this.Suid = Suid;
-        this.Stext = Stext;
-        this.Simg = Simg;
-        this.Stime = Stime;
-        this.Svisible = Svisible;
+        this.sid = Sid;
+        this.suid = Suid;
+        this.stext = Stext;
+        this.simg = Simg;
+        this.stime = Stime;
+        this.svisible = Svisible;
     }
     public Share(int Suid,String Stext,String Simg,String Stime,int Svisible){
 
-        this.Suid = Suid;
-        this.Stext = Stext;
-        this.Simg = Simg;
-        this.Stime = Stime;
-        this.Svisible = Svisible;
+        this.suid = Suid;
+        this.stext = Stext;
+        this.simg = Simg;
+        this.stime = Stime;
+        this.svisible = Svisible;
     }
+
     public int getSid() {
-        return Sid;
+        return sid;
     }
 
     public void setSid(int sid) {
-        Sid = sid;
+        this.sid = sid;
     }
 
     public int getSuid() {
-        return Suid;
+        return suid;
     }
 
     public void setSuid(int suid) {
-        Suid = suid;
+        this.suid = suid;
     }
 
     public String getStext() {
-        return Stext;
+        return stext;
     }
 
     public void setStext(String stext) {
-        Stext = stext;
+        this.stext = stext;
     }
 
     public String getSimg() {
-        return Simg;
+        return simg;
     }
 
     public void setSimg(String simg) {
-        Simg = simg;
+        this.simg = simg;
     }
 
-
-
     public int getSvisible() {
-        return Svisible;
+        return svisible;
     }
 
     public void setSvisible(int svisible) {
-        Svisible = svisible;
+        this.svisible = svisible;
     }
-
-
 }
