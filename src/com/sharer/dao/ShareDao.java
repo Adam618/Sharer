@@ -50,8 +50,11 @@ public class ShareDao {
     public static boolean insertShare(Share share) {
         String sql = "insert into share values(null,?,?,?,?,?) ";
         boolean status = false;
+        ResultSet set = null;
+        Connection con = null;
         PreparedStatement pst = DBUtil.getPst(sql);
         try {
+            con = pst.getConnection();
             pst.setInt(1, share.getSuid());
             pst.setString(2, share.getStext());
             pst.setString(3, share.getSimg());
@@ -63,6 +66,8 @@ public class ShareDao {
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("插入动态失败！");
+        }finally {
+            DBUtil.close(con,pst,set);
         }
         return status;
     }

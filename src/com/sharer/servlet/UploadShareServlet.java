@@ -15,7 +15,7 @@ import java.io.IOException;
 
 @WebServlet("/uss")
 
-public class uploadShareServlet extends HttpServlet {
+public class UploadShareServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**

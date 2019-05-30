@@ -148,7 +148,10 @@ public class UsersDao {
         String sql = "insert into Users values(null,?,?,?,?,?,?,?,?,?)";
         boolean flag = false;
         PreparedStatement pst = DBUtil.getPst(sql);
+        Connection con = null;
+        ResultSet set = null;
         try {
+            con = pst.getConnection();
             setPst(pst,user);
             pst.setString(7,user.getUpwd());
             pst.setInt(8,0); // 封禁值 默认为0
@@ -158,6 +161,8 @@ public class UsersDao {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            DBUtil.close(con,pst,set);
         }
         return flag;
     }

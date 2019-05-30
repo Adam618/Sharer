@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/sus")
-public class showUserServlet extends HttpServlet {
+public class ShowUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int  Suid = Integer.parseInt(request.getParameter("Suid"));
         User user = UserService.searchUserById(Suid); // 查询发此动态的用户信息

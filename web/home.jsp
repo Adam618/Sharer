@@ -63,7 +63,6 @@
                 <%--                <label for="visibleSelected">可见范围</label>--%>
                 <select id="visibleSelected"
                         style="float: right;margin-right: 10px;margin-top: 5px;height: 28px;width: 95px">
-
                     <option selected="selected" value="0">所有人可见</option>
                     <option value="1">仅自己可见</option>
                 </select>
@@ -72,55 +71,55 @@
         <div id="sharePanel"></div>
         <%--        发表动态部分结束--%>
 
-<%--        <div class="panel panel-default " style="margin-bottom: 0;margin-top: 40px">--%>
-<%--            <!-- Default panel contents -->--%>
-<%--            <div class="panel-heading;" style="background-color: #ffffff;">--%>
-<%--                &lt;%&ndash;            用户名、头像部分&ndash;%&gt;--%>
-<%--                <div>--%>
-<%--                    <div style="display: inline-block">--%>
-<%--                        <a href="#" class="img-responsive">--%>
-<%--                            <img class="img-circle " src="profilePicture/defaultImg.jpeg"--%>
-<%--                                 style="height: 40px;width: 40px;margin-bottom: 3px"--%>
-<%--                                 alt="用户头像">--%>
-<%--                        </a>--%>
-<%--                    </div>--%>
-<%--                    &nbsp;--%>
-<%--                    <div style="display: inline-block">--%>
-<%--                        <h5> haha</h5>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
+        <%--        <div class="panel panel-default " style="margin-bottom: 0;margin-top: 40px">--%>
+        <%--            <!-- Default panel contents -->--%>
+        <%--            <div class="panel-heading;" style="background-color: #ffffff;">--%>
+        <%--                &lt;%&ndash;            用户名、头像部分&ndash;%&gt;--%>
+        <%--                <div>--%>
+        <%--                    <div style="display: inline-block">--%>
+        <%--                        <a href="#" class="img-responsive">--%>
+        <%--                            <img class="img-circle " src="profilePicture/defaultImg.jpeg"--%>
+        <%--                                 style="height: 40px;width: 40px;margin-bottom: 3px"--%>
+        <%--                                 alt="用户头像">--%>
+        <%--                        </a>--%>
+        <%--                    </div>--%>
+        <%--                    &nbsp;--%>
+        <%--                    <div style="display: inline-block">--%>
+        <%--                        <h5> haha</h5>--%>
+        <%--                    </div>--%>
+        <%--                </div>--%>
 
-<%--            </div>--%>
-<%--            &lt;%&ndash;            动态图片部分&ndash;%&gt;--%>
-<%--            <img class="img-responsive " src="profilePicture/test.jpg">--%>
-<%--        </div>--%>
+        <%--            </div>--%>
+        <%--            &lt;%&ndash;            动态图片部分&ndash;%&gt;--%>
+        <%--            <img class="img-responsive " src="profilePicture/test.jpg">--%>
+        <%--        </div>--%>
 
-<%--        &lt;%&ndash;        点赞、评论、转发部分&ndash;%&gt;--%>
-<%--        <div class="panel panel-default">--%>
-<%--            <!-- Default panel contents -->--%>
-<%--            <div class="panel-heading" style="background-color: #ffffff ;">--%>
-<%--                &lt;%&ndash;                <div class="feed" id="feed1">&ndash;%&gt;--%>
-<%--                &lt;%&ndash;                                    点赞&ndash;%&gt;--%>
-<%--                <div class="heart "--%>
-<%--                     style="margin-top: -25px;margin-left: 10px;display: inline-block;position: absolute;z-index: 0;"--%>
-<%--                     id="like1" rel="like"></div>--%>
+        <%--        &lt;%&ndash;        点赞、评论、转发部分&ndash;%&gt;--%>
+        <%--        <div class="panel panel-default">--%>
+        <%--            <!-- Default panel contents -->--%>
+        <%--            <div class="panel-heading" style="background-color: #ffffff ;">--%>
+        <%--                &lt;%&ndash;                <div class="feed" id="feed1">&ndash;%&gt;--%>
+        <%--                &lt;%&ndash;                                    点赞&ndash;%&gt;--%>
+        <%--                <div class="heart "--%>
+        <%--                     style="margin-top: -25px;margin-left: 10px;display: inline-block;position: absolute;z-index: 0;"--%>
+        <%--                     id="like1" rel="like"></div>--%>
 
-<%--                &lt;%&ndash;                评论&ndash;%&gt;--%>
-<%--                <div style="display: inline-block;margin-top: 3px;margin-left: 35px;position: absolute;z-index: 1"><img--%>
-<%--                        src="images/评论%20(2).png"></div>--%>
+        <%--                &lt;%&ndash;                评论&ndash;%&gt;--%>
+        <%--                <div style="display: inline-block;margin-top: 3px;margin-left: 35px;position: absolute;z-index: 1"><img--%>
+        <%--                        src="images/评论%20(2).png"></div>--%>
 
-<%--                &lt;%&ndash;                分享&ndash;%&gt;--%>
-<%--                <div style="float: right;margin-right: -10px"><img src="images/星星线描%20(1).png"></div>--%>
-<%--&lt;%&ndash;            <div style="float: right;margin-right: -10px"><img src="images/星星_选中.png"></div>&ndash;%&gt;--%>
-<%--                <div style="margin-top:6px;margin-left: 77px"><img src="images/分享%20(3).png"></div>--%>
-<%--                <div class="likeCount" style="width: 30px;margin-left: -8px;margin-top: 2px" id="likeCount1">14</div>--%>
+        <%--                &lt;%&ndash;                分享&ndash;%&gt;--%>
+        <%--                <div style="float: right;margin-right: -10px"><img src="images/星星线描%20(1).png"></div>--%>
+        <%--&lt;%&ndash;            <div style="float: right;margin-right: -10px"><img src="images/星星_选中.png"></div>&ndash;%&gt;--%>
+        <%--                <div style="margin-top:6px;margin-left: 77px"><img src="images/分享%20(3).png"></div>--%>
+        <%--                <div class="likeCount" style="width: 30px;margin-left: -8px;margin-top: 2px" id="likeCount1">14</div>--%>
 
-<%--                <div style="margin-left: 15px;margin-top: -20px;float: left"><b>&nbsp;次赞</b></div>--%>
-<%--                <div></div>--%>
-<%--                &lt;%&ndash;                            </div>&ndash;%&gt;--%>
+        <%--                <div style="margin-left: 15px;margin-top: -20px;float: left"><b>&nbsp;次赞</b></div>--%>
+        <%--                <div></div>--%>
+        <%--                &lt;%&ndash;                            </div>&ndash;%&gt;--%>
 
-<%--            </div>--%>
-<%--        </div>--%>
+        <%--            </div>--%>
+        <%--        </div>--%>
 
 
     </div>
@@ -132,6 +131,7 @@
 </body>
 
 <script>
+    var Kuid = "${sessionScope.user.uid}";  // 存储的当前登录用户的uid
     var start = 1;
     var path = "${applicationScope.path}";
     $(document).ready(function () {
@@ -168,7 +168,8 @@
 
 
                         console.log('userInfoList', userInfoList);
-                        console.log('shareTest', share.stext)
+                        console.log('shareTest', share.stext);
+                        console.log('shareTest', share.sid);
                         var s1 = "    <div class=\"panel panel-default\" style=\"margin-bottom: 0px;\">\n" +
                             "        <!-- Default panel contents -->\n" +
                             "        <div class=\"panel-heading\" style=\"background-color: #ffffff\">\n" +
@@ -196,7 +197,7 @@
                         var s2 = "    <%--        点赞、评论、转发部分--%>\n" +
                             "    <div class=\"panel panel-default\">\n" +
                             "        <!-- Default panel contents -->\n" +
-                            "        <div class=\"panel-heading\" style=\"background-color: #ffffff ;\">\n" +
+                            "        <div class=\"panel-heading\" id=\"doPanel\" style=\"background-color: #ffffff ;\">\n" +
                             "            <%--                <div class=\"feed\" id=\"feed1\">--%>\n" +
                             "        <%--            点赞--%>\n" +
                             "            <div class=\"heart \" style=\"margin-top: -25px;margin-left: 10px;display: inline-block;position: absolute;z-index: 0;\"\n" +
@@ -206,8 +207,9 @@
                             "                    src=\"images/评论%20(2).png\"></div>\n" +
                             "        <%--                分享--%>\n" +
                             "            <div style=\"margin-top:6px;margin-left: 77px\"><img src=\"images/分享%20(3).png\"></div>\n" +
-                                                          // 收藏
-                            "            <div style=\"float: right;margin-right: -10px;margin-top:-27px\"><img src=\"images/星星线描%20(1).png\"></div>\n" +
+                            // 收藏
+                            "            <div id=\"keep\" style=\"float: right;margin-right: -10px;margin-top:-27px\">"+iskeep(share.sid)+"</div>\n" +
+
                             "            <div class=\"likeCount\" style=\"width: 30px;margin-left: -8px;margin-top: 2px\" id=\"likeCount1\">14</div>\n" +
                             "\n" +
                             "          <div style=\"margin-left: 15px;margin-top: -20px;float: left\"><b>&nbsp;次赞</b></div>\n" +
@@ -216,8 +218,6 @@
                             "\n" +
                             "        </div>\n" +
                             "    </div>";
-
-
                         $('#sharePanel').append(s1 + s2);
 
                     })
@@ -266,20 +266,16 @@
 
         });
 
-
 // 展示图片路径结束
-
-
 // 当页面开始滚动时就触发此事件
-
 
         $(window).scroll(function () {
             var scrolltop = $(document).scrollTop();
             var scrollheight = $(document).height();
             var widowheight = $(window).height();
             if (scrolltop + widowheight + 1 >= scrollheight) {
-                created();
                 start++;
+                created();
                 console.log('start' + start);
             }
         });
@@ -290,7 +286,6 @@
             var file = $("#thisFile")[0].files[0];//新特性，获取文件对象
             var Stext = $("#Stext").val();
             var fordata = new FormData();//新特性，得到formData对象，把获取的值扔进去，相当于map
-            // fordata.append("name",name);
             fordata.append("Svisible", Svisable);
             fordata.append("Stext", Stext);
             fordata.append("file", file);
@@ -313,9 +308,41 @@
                     created();
                 }
             })
+        });
 
-        })
 
+        function iskeep(Ksid) {
+            var flag = false;
+            console.log("run");
+            var unSelected = "<img src=\"images/星星线描%20(1).png\">";
+            var selected = "<img src=\"images/星星_选中.png\">";
+            $.ajax({
+                url: "iks",
+                async:false,
+                type: 'POST',
+                data: {Kuid: Kuid, Ksid: Ksid},
+                dataType: 'text',
+                success: function (status) {
+                    console.log('status',status);
+
+                    if (status === "true") {
+                        // $('#keep').html(selected);
+                    flag = true;
+                    } else {
+                        $('#keep').html(unSelected);
+                    }
+                },
+                error: function () {
+                    alert("error!")
+                }
+
+            });
+         if (flag === true) {
+             return selected;
+         }else {
+             return  unSelected
+         }
+        }
 
     });
 

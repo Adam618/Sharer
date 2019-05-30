@@ -1,8 +1,6 @@
 package com.sharer.servlet;
 
-import com.sharer.entity.Admin;
 import com.sharer.entity.User;
-import com.sharer.service.AdminService;
 import com.sharer.service.UserService;
 
 import javax.servlet.ServletException;
@@ -10,24 +8,39 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet("/als")
-public class adminLoginServlet extends HttpServlet {
+
+@WebServlet("/uls")
+public class UserLoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String Aname = request.getParameter("Aname");
-        String Apwd = request.getParameter("Apwd");
-        Admin admin = AdminService.searchAdminByName(Aname);
+
+        response.setContentType("text/html;charset=utf-8");
+        String Uname = request.getParameter("Uname");
+        String Upwd = request.getParameter("Upwd");
         String result = " ";
-        if (admin == null) {
+
+
+        User user = UserService.searchUserByName(Uname);
+//        System.out.println(user.getUpwd());
+        if (null == user) { // 代表没查询到用户
             result = "false";
         } else {
-            if (admin.getApwd().equals(Apwd) ) {
+            if (Upwd.equals(user.getUpwd())) {
+                HttpSession session = request.getSession();
+                session.setAttribute("user", user);
                 result = "ture";
+
             } else {
                 result = "false";
             }
         }
+
+
         response.getWriter().write(result);
+
     }
-    }
+
+
+}

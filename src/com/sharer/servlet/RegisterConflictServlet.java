@@ -13,7 +13,7 @@ import java.io.IOException;
 
 
 @WebServlet("/rcs")
-public class registerConflictServlet extends HttpServlet {
+public class RegisterConflictServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //        String jsonResult = "";
 //        String Uphone = req.getParameter("Uphone");
