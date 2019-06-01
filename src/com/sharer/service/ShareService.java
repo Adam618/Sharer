@@ -18,10 +18,10 @@ public static List<Share> getShareByUid(int Uid,int start){
 
 // 复制到图片到虚拟路径
     public static String getFileNameFromPart(Part part) {
+
         String header = part.getHeader("Content-Disposition");
         System.out.println(header);
         String fileName = header.substring(header.indexOf("filename=\"")+10, header.lastIndexOf("\""));
-
         return fileName;
 
     }

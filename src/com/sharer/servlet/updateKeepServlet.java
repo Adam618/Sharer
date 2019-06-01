@@ -1,7 +1,6 @@
 package com.sharer.servlet;
 
 import com.sharer.entity.Keep;
-import com.sharer.entity.User;
 import com.sharer.service.KeepService;
 
 import javax.servlet.ServletException;
@@ -15,15 +14,17 @@ import java.io.IOException;
 public class updateKeepServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset = utf-8");
-        User user = (User) request.getSession().getAttribute("user");
+//        User user = (User) request.getSession().getAttribute("user");
         int flag = Integer.parseInt(request.getParameter("flag"));
         int Ksid = Integer.parseInt(request.getParameter("Ksid"));
-        int Kuid = user.getUid();
+        int Kuid = Integer.parseInt(request.getParameter("Kuid"));  // 从页面获取会话然后传过来
         if (flag == 1) {
             Keep keep = new Keep(Kuid, Ksid);
             boolean insertStatus = KeepService.insertKeep(keep);
+            response.getWriter().write(""+insertStatus);
         } else {
             boolean deleteStatus = KeepService.deleteKeep(Kuid,Ksid);
+            response.getWriter().write(""+deleteStatus);
         }
 
     }

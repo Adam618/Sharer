@@ -13,10 +13,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
           crossorigin="anonymous">
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
-    <%--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"--%>
-    <%--            crossorigin="anonymous"></script>--%>
-    <%--    <script--%>
-    <%--            src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>--%>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrapValidator.js"></script>
+    <script src="js/dropdown.js"></script>
 
 <style>
 
@@ -40,7 +40,7 @@
 
 <%--    <button type="submit">提交</button>--%>
 <%--</form>--%>
-<div style="float: right;margin-right: -10px;margin-top:-27px" id="un"><img src="images/星星_选中.png"></div>
+<div style="float: right;margin-right: -10px;margin-top:-27px" id="un"><img alt="" src="images/星星_选中.png"></div>
 </body>
 <script>
 

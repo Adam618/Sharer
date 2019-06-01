@@ -172,9 +172,10 @@
                                 "                        <button type=\"button\" class=\"close \" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
                                 "                        <center> 用户名或密码错误！</center>\n" +
                                 "                    </div>");
-                        } else {
 
+                        } else {
                             window.location.href = "home.jsp";
+
 
                             // 登录成功就跳转页面
                         }

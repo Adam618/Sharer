@@ -200,15 +200,14 @@
                             "        <div class=\"panel-heading\" id=\"doPanel\" style=\"background-color: #ffffff ;\">\n" +
                             "            <%--                <div class=\"feed\" id=\"feed1\">--%>\n" +
                             "        <%--            点赞--%>\n" +
-                            "            <div class=\"heart \" style=\"margin-top: -25px;margin-left: 10px;display: inline-block;position: absolute;z-index: 0;\"\n" +
-                            "                                                   id=\"like1\" rel=\"like\"></div>\n" +
+                            "          <a id=\"like" + share.sid + "\" href=\"#\">  <div class=\"heart \" style=\"margin-top: -25px;margin-left: 10px;display: inline-block;position: absolute;z-index: 0;id=\"like1\" rel=\"like\"></div>\n</a>" +
                             "        <%--                评论--%>\n" +
                             "            <div style=\"display: inline-block;margin-top: 3px;margin-left: 35px;position: absolute;z-index: 1\"><img\n" +
                             "                    src=\"images/评论%20(2).png\"></div>\n" +
                             "        <%--                分享--%>\n" +
                             "            <div style=\"margin-top:6px;margin-left: 77px\"><img src=\"images/分享%20(3).png\"></div>\n" +
                             // 收藏
-                            "            <div id=\"keep\" style=\"float: right;margin-right: -10px;margin-top:-27px\">"+iskeep(share.sid)+"</div>\n" +
+                            "            <a id=\"" + share.sid + "\" href=\"javascript:updateKeep('" + share.sid + "')\"><div id=\"keep\" style=\"float: right;margin-right: -10px;margin-top:-30px\">" + iskeep(share.sid) + "</div>\n</a>" +
 
                             "            <div class=\"likeCount\" style=\"width: 30px;margin-left: -8px;margin-top: 2px\" id=\"likeCount1\">14</div>\n" +
                             "\n" +
@@ -310,26 +309,24 @@
             })
         });
 
-
+// 查询收藏状态
         function iskeep(Ksid) {
             var flag = false;
             console.log("run");
-            var unSelected = "<img src=\"images/星星线描%20(1).png\">";
-            var selected = "<img src=\"images/星星_选中.png\">";
+            var unSelected = "<img title=\"收藏\" id=\"unSelected\" src=\"images/星星线描%20(1).png\">";
+            var selected = "<img title=\"取消收藏\" id=\"selected\" src=\"images/星星_选中.png\">";
             $.ajax({
                 url: "iks",
-                async:false,
+                async: false,
                 type: 'POST',
                 data: {Kuid: Kuid, Ksid: Ksid},
                 dataType: 'text',
                 success: function (status) {
-                    console.log('status',status);
+                    console.log('status', status);
 
                     if (status === "true") {
                         // $('#keep').html(selected);
-                    flag = true;
-                    } else {
-                        $('#keep').html(unSelected);
+                        flag = true;
                     }
                 },
                 error: function () {
@@ -337,15 +334,61 @@
                 }
 
             });
-         if (flag === true) {
-             return selected;
-         }else {
-             return  unSelected
-         }
+            if (flag === true) {
+                return selected;
+            } else {
+                return unSelected
+            }
         }
+
 
     });
 
+    function updateKeep(Sid) {
+        var flag = 0;
+        var unSelected = "<img title=\"收藏\" id=\"unSelected\" src=\"images/星星线描%20(1).png\">";
+        var selected = "<img title=\"取消收藏\" id=\"selected\" src=\"images/星星_选中.png\">";
+        if ($("#" + Sid + " #selected").length > 0) {  // 原来选中点击变为不选中,取消收藏
+            $.ajax({
+                type: 'POST',
+                url: "uks",
+                dataType: "text",
+                async: false,
+                data: {flag: flag, Kuid: Kuid, Ksid: Sid},
+                success: function (deleteStatus) {
+                    if (deleteStatus === "true") {
+                        $("#" + Sid + " #keep").html(unSelected);
+                    } else {
+                        console.log("取消收藏失败！")
+                    }
+                },
+                error: function () {
+                    console.log("error1")
+                }
+            });
 
+            console.log("存在选中！");
+        } else { // 原来不选中点击变为选中，收藏
+            flag = 1;
+            $.ajax({
+                type: 'POST',
+                url: "uks",
+                dataType: "text",
+                async: false,
+                data: {flag: flag, Kuid: Kuid, Ksid: Sid},
+                success: function (insertStatus) {
+                    if (insertStatus === "true") {
+                        $("#" + Sid + " #keep").html(selected);
+                    } else {
+                        console.log("收藏失败！")
+                    }
+                },
+                error: function () {
+                    console.log("error2")
+                }
+            });
+
+        }
+    }
 </script>
 </html>
