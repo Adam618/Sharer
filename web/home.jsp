@@ -35,7 +35,7 @@
 <body>
 
 <div class="row">
-    <div class="col-md-2 col-sm-2 col-xs-1 " style="background-color: #2e6da4">1
+    <div class="col-md-2 col-sm-2 col-xs-1 " >
         <%--第一列--%>
     </div>
 
@@ -124,8 +124,8 @@
 
     </div>
     <%--    这个div用来存放响应隐藏面板--%>
-    <div class="col-md-3 col-sm-3  hidden-xs" style="background-color: #8c8c8c">3</div>
-    <div class="col-md-2 col-sm-2 col-xs-1 " style="background-color: #8a6d3b">4</div>
+    <div class="col-md-3 col-sm-3  hidden-xs"></div>
+    <div class="col-md-2 col-sm-2 col-xs-1 " ></div>
 
 </div>
 </body>
@@ -200,7 +200,7 @@
                             "        <div class=\"panel-heading\" id=\"doPanel\" style=\"background-color: #ffffff ;\">\n" +
                             "            <%--                <div class=\"feed\" id=\"feed1\">--%>\n" +
                             "        <%--            点赞--%>\n" +
-                            "          <a id=\"like" + share.sid + "\" href=\"#\">  <div class=\"heart \" style=\"margin-top: -25px;margin-left: 10px;display: inline-block;position: absolute;z-index: 0;id=\"like1\" rel=\"like\"></div>\n</a>" +
+                            "          <a id=\"like" + share.sid + "\" href=\"javascript:updateLike('" + share.sid + "')\">" + isLiked(share.sid) + " " +   // 为作区分，点赞按钮的超链接的id取名为like+sid
                             "        <%--                评论--%>\n" +
                             "            <div style=\"display: inline-block;margin-top: 3px;margin-left: 35px;position: absolute;z-index: 1\"><img\n" +
                             "                    src=\"images/评论%20(2).png\"></div>\n" +
@@ -209,9 +209,9 @@
                             // 收藏
                             "            <a id=\"" + share.sid + "\" href=\"javascript:updateKeep('" + share.sid + "')\"><div id=\"keep\" style=\"float: right;margin-right: -10px;margin-top:-30px\">" + iskeep(share.sid) + "</div>\n</a>" +
 
-                            "            <div class=\"likeCount\" style=\"width: 30px;margin-left: -8px;margin-top: 2px\" id=\"likeCount1\">14</div>\n" +
+                            "            <div id=\"likesCount"+share.sid+"\" class=\"likeCount\" style=\"width: 30px;margin-left: -5px;margin-top: 2px\">"+getLikesCount(share.sid)+"</div>\n" +
                             "\n" +
-                            "          <div style=\"margin-left: 15px;margin-top: -20px;float: left\"><b>&nbsp;次赞</b></div>\n" +
+                            "          <div  style=\"margin-left: 15px;margin-top: -23px;float: left\"><b>次赞</b></div>\n" +
                             "                <div></div>\n" +
                             "<%--                            </div>--%>\n" +
                             "\n" +
@@ -230,24 +230,24 @@
         }
 
 
-        $('body').on("click", '.heart', function () {
-
-            var A = $(this).attr("id");
-            var B = A.split("like");
-            var messageID = B[1];
-            var C = parseInt($("#likeCount" + messageID).html());
-            $(this).css("background-position", "")
-            var D = $(this).attr("rel");
-
-            if (D === 'like') {
-                $("#likeCount" + messageID).html(C + 1);
-                $(this).addClass("heartAnimation").attr("rel", "unlike");
-            } else {
-                $("#likeCount" + messageID).html(C - 1);
-                $(this).removeClass("heartAnimation").attr("rel", "like");
-                $(this).css("background-position", "left");
-            }
-        });
+        // $('body').on("click", '.heart', function () {
+        //
+        //     var A = $(this).attr("id");
+        //     var B = A.split("like");
+        //     var messageID = B[1];
+        //     var C = parseInt($("#likeCount" + messageID).html());
+        //     $(this).css("background-position", "")
+        //     var D = $(this).attr("rel");
+        //
+        //     if (D === 'like') {
+        //         $("#likeCount" + messageID).html(C + 1);
+        //         $(this).addClass("heartAnimation").attr("rel", "unlike");
+        //     } else {
+        //         $("#likeCount" + messageID).html(C - 1);
+        //         $(this).removeClass("heartAnimation").attr("rel", "like");
+        //         $(this).css("background-position", "left");
+        //     }
+        // });
 
         // 展示图片路径
         $('#browse').click(function makeThisFile() {
@@ -265,8 +265,7 @@
 
         });
 
-// 展示图片路径结束
-// 当页面开始滚动时就触发此事件
+// 滚动加载更多
 
         $(window).scroll(function () {
             var scrolltop = $(document).scrollTop();
@@ -309,7 +308,7 @@
             })
         });
 
-// 查询收藏状态
+// 查询收藏按钮初始状态
         function iskeep(Ksid) {
             var flag = false;
             console.log("run");
@@ -344,6 +343,7 @@
 
     });
 
+    // 收藏按钮的操作
     function updateKeep(Sid) {
         var flag = 0;
         var unSelected = "<img title=\"收藏\" id=\"unSelected\" src=\"images/星星线描%20(1).png\">";
@@ -390,5 +390,115 @@
 
         }
     }
+
+    // 点赞按钮初始状态
+    function isLiked(Lsid) {
+        var flag = false;
+        var liked = "<div class=\"heart heartAnimation\" style=\"margin-top:-25px;margin-left:10px;display:inline-block;position:absolute;z-index: 0;\" id=\"likeOrUnlike\" rel=\"like\"></div>";
+        var unLiked = "<div class=\"heart \" style=\"margin-top:-25px;margin-left:10px;display:inline-block;position:absolute;z-index:0;\" id=\"likeOrUnlike\" rel=\"unlike\"></div>";
+        $.ajax({
+            url: "IsLikedServlet",
+            dataType: "text",
+            type: "POST",
+            async: false,
+            data: {Luid: Kuid, Lsid: Lsid},
+            success: function (status) {
+                if (status === "true") {
+                    flag = true;
+                }
+            },
+            error: function () {
+                alert("error")
+            }
+        });
+        if (flag === true) {
+            return liked;
+        } else {
+            return unLiked;
+        }
+    }
+    
+ // 修改点赞按钮状态
+    function updateLike(Lsid) {
+        console.log("a");
+        var a = "#like"+Lsid+" #likeOrUnlike";
+        var flag =  0; // 0代表没点赞取消点赞 1代表点赞";
+        var status = $(a).attr("rel");
+    console.log(status);
+        $(a).css("background-position", "");
+        if(status === 'unlike'){  // 如果原来没点赞，执行点赞操作
+            flag = 1;
+            $.ajax({
+                url:"UpdateLikesServlet",
+                type:"post",
+                dataType:"text",
+                data:{flag:flag,Lsid:Lsid,Luid:Kuid},
+                success:function (insertStatus) {
+                    if(insertStatus === "true"){
+                        $(a).addClass("heartAnimation").attr("rel", "like");
+                        $("#likesCount"+Lsid).html(getLikesCount(Lsid));
+
+
+                    }else {
+                        console.log("添加点赞失败!");
+                    }
+                },
+                error: function () {
+            alert("error")
+                }
+            });
+
+
+        }else {  // 执行取消点赞操作
+            flag = 0;
+            $.ajax({
+                url:"UpdateLikesServlet",
+                type:"post",
+                async:false,
+                dataType:"text",
+                data:{flag:flag,Lsid:Lsid,Luid:Kuid},
+                success:function (insertStatus) {
+                    if(insertStatus === "true"){
+                        $(a).removeClass("heartAnimation").attr("rel", "unlike");
+                        $(a).css("background-position", "left");
+                        $("#likesCount"+Lsid).html(getLikesCount(Lsid));
+                    }else {
+                        console.log("取消点赞失败!");
+                    }
+
+                },
+                error: function() {
+                    alert( "error");
+                }
+            });
+
+            // $(a).removeClass("heartAnimation").attr("rel", "unlike");
+            // $(a).css("background-position", "left");
+        }
+    }
+
+    function getLikesCount(Lsid) {
+        var count;
+         $.ajax({
+             url:"LikesCountServlet",
+             dataType:"text",
+             type:"post",
+             data:{Lsid:Lsid},
+             async:false,
+             success: function (likesCount) {
+                 count = likesCount
+             // $("#likescount"+Lsid).html(likesCount);
+             },
+             error: function () {
+                 console.log("查询赞数失败")
+             }
+         });
+         console.log("count",count);
+         return count;
+
+    }
+
+
+
 </script>
 </html>

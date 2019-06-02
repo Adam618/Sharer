@@ -10,7 +10,7 @@ public class LikesService {
 
     // 取消点赞
     public static boolean deleteLikes(int Luid,int Lsid){
-        return  LikesDao.insertLikes(Luid,Lsid);
+        return  LikesDao.deleteLikes(Luid,Lsid);
     }
 
     // 查看当前动态赞数

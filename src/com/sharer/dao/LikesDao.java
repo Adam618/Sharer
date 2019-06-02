@@ -34,7 +34,7 @@ public class LikesDao {
 
     // 取消点赞
     public static boolean deleteLikes(int Luid, int Lsid) {
-        String sql = "delete from likes where Luid = ?,Lsid = ?";
+        String sql = "delete from likes where Luid = ? and Lsid = ?";
         Connection con = null;
         ResultSet set = null;
         boolean deleteStatus = false;
@@ -64,6 +64,7 @@ public class LikesDao {
             con = pst.getConnection();
             pst.setInt(1, Lsid);
             set = pst.executeQuery();
+             while (set.next())
             likesCount = set.getInt(1);  // 返回这条动态的点赞数
         } catch (SQLException e) {
             e.printStackTrace();

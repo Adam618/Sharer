@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
   // 点赞的servlet简写跟用户的servley冲突，所以用原名
 
-@WebServlet(name = "UpdateLikesServlet")
+@WebServlet("/UpdateLikesServlet")
 public class UpdateLikesServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int flag = Integer.parseInt(request.getParameter("flag"));

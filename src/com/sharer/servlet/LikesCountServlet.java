@@ -9,12 +9,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "LikesCountServlet")
+@WebServlet("/LikesCountServlet")
 public class LikesCountServlet extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=utf-8");
      int Lsid = Integer.parseInt(request.getParameter("Lsid"));
      int likesCount = LikesService.getLikesCount(Lsid);
-     response.getWriter().write(likesCount);
+     System.out.println("likecount"+likesCount);
+     response.getWriter().write(likesCount+"");
     }
 
 
