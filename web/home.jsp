@@ -29,13 +29,32 @@
         body {
             background-color: #fafafa
         }
+        #currentUserImg {
+            height: 48px;
+            width: 48px;
+            margin-left: 20px;
+            margin-top: 10px;
+            display: inline-block;
+        }
+        #currentUserName {
+            display: inline-block;
+            font-weight: bold;
+            margin-left: 9px;
+            margin-top: 20px;
+        }
+        #default {
+            margin-left: 15px;
+            margin-top: 20px;
+        }
+
+
 
     </style>
 </head>
 <body>
 
 <div class="row">
-    <div class="col-md-2 col-sm-2 col-xs-1 " >
+    <div class="col-md-2 col-sm-2 col-xs-1 ">
         <%--第一列--%>
     </div>
 
@@ -68,9 +87,11 @@
                 </select>
             </div>
         </div>
+        <%--            用户发表的动态在这个div里--%>
         <div id="sharePanel"></div>
-        <%--        发表动态部分结束--%>
 
+        <%--        发表动态部分结束--%>
+        <%--删--%>
         <%--        <div class="panel panel-default " style="margin-bottom: 0;margin-top: 40px">--%>
         <%--            <!-- Default panel contents -->--%>
         <%--            <div class="panel-heading;" style="background-color: #ffffff;">--%>
@@ -94,7 +115,7 @@
         <%--            <img class="img-responsive " src="profilePicture/test.jpg">--%>
         <%--        </div>--%>
 
-        <%--        &lt;%&ndash;        点赞、评论、转发部分&ndash;%&gt;--%>
+        <%--   删             点赞、评论、转发部分--%>
         <%--        <div class="panel panel-default">--%>
         <%--            <!-- Default panel contents -->--%>
         <%--            <div class="panel-heading" style="background-color: #ffffff ;">--%>
@@ -110,24 +131,55 @@
 
         <%--                &lt;%&ndash;                分享&ndash;%&gt;--%>
         <%--                <div style="float: right;margin-right: -10px"><img src="images/星星线描%20(1).png"></div>--%>
-        <%--&lt;%&ndash;            <div style="float: right;margin-right: -10px"><img src="images/星星_选中.png"></div>&ndash;%&gt;--%>
+        <%--                &lt;%&ndash;            <div style="float: right;margin-right: -10px"><img src="images/星星_选中.png"></div>&ndash;%&gt;--%>
         <%--                <div style="margin-top:6px;margin-left: 77px"><img src="images/分享%20(3).png"></div>--%>
         <%--                <div class="likeCount" style="width: 30px;margin-left: -8px;margin-top: 2px" id="likeCount1">14</div>--%>
 
         <%--                <div style="margin-left: 15px;margin-top: -20px;float: left"><b>&nbsp;次赞</b></div>--%>
-        <%--                <div></div>--%>
+        <%--                    <div style="margin-top: 5px" class="row"><h5 style="display: inline-block;margin-left: 10px;font-weight: 600">Adam</h5><h5 style="display: inline-block">&nbsp;旋转 跳跃 我闭着眼</h5></span> </div>--%>
+        <%--                    <a href="#" style="margin-left: -5px;color: #8c8c8c">查看全部评论</a>--%>
         <%--                &lt;%&ndash;                            </div>&ndash;%&gt;--%>
 
         <%--            </div>--%>
         <%--        </div>--%>
 
 
+        <%--    </div>--%>
     </div>
-    <%--    这个div用来存放响应隐藏面板--%>
-    <div class="col-md-3 col-sm-3  hidden-xs"></div>
-    <div class="col-md-2 col-sm-2 col-xs-1 " ></div>
+        <%--    这个div用来存放响应隐藏面板--%>
 
-</div>
+        <div class="col-md-3 col-sm-3  hidden-xs">
+           <div class="row" style="position: fixed;" >
+               <img class="img-circle" id="currentUserImg" src="${initParam.userPath}${sessionScope.user.uimg}">
+               <h5 id="currentUserName" style="display: inline-block">${sessionScope.user.uname}</h5>
+               <div class="row thumbnail" style="padding: 10px" id="default">
+
+                   <div><h5 style="color: #8c8c8c">快拍</h5></div>
+
+                   <div style="margin-top: 13px">
+                       <h5 style="color: #8c8c8c">你的关注用户动态会显示在这里哦&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </h5>
+                   </div>
+
+               </div>
+
+               <div class="row thumbnail" style="padding: 10px" id="default">
+
+                   <div><h5 style="color: #8c8c8c">为你推荐</h5></div>
+
+                   <div style="margin-top: 13px">
+                       <h5 style="color: #8c8c8c">你的关注用户动态会显示在这里哦&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </h5>
+                   </div>
+
+               </div>
+           </div>
+
+
+        </div>
+        <div class="col-md-2 col-sm-2 col-xs-1 "></div>
+
+
+
+    </div>
 </body>
 
 <script>
@@ -177,20 +229,20 @@
                             "            <div>\n" +
                             "                <div style=\"display: inline-block\">\n" +
                             "                    <a href=\"#\" class=\"img-responsive\">\n" +
-                            "                        <img class=\"img-circle \" src=\"profilePicture/" + userInfoList.uimg + "\"\n" +
+                            "                        <img class=\"img-circle \" src=\"${initParam.userPath}" + userInfoList.uimg + "\"\n" +
                             "                             style=\"height: 40px;width: 40px;margin-bottom: 3px\"\n" +
                             "                             alt=\"用户头像\">\n" +
                             "                    </a>\n" +
                             "                </div>\n" +
                             "                &nbsp;\n" +
                             "                <div style=\"display: inline-block\">\n" +
-                            "                    <h5 > " + userInfoList.uname + "</h5>\n" +
+                            "                    <h5 ><b> " + userInfoList.uname + "</b></h5>\n" +
                             "                </div>\n" +
                             "            </div>\n" +
                             "\n" +
                             "        </div>\n" +
                             "        <%--            动态图片部分--%>\n" +
-                            "        <img class=\"img-responsive center-block \" src=\"${initParam.path}" + share.simg + "\">\n" +
+                            "        <img class=\"img-responsive center-block \" src=\"${initParam.sharePath}" + share.simg + "\">\n" +
                             "    </div>";
 
 
@@ -200,24 +252,26 @@
                             "        <div class=\"panel-heading\" id=\"doPanel\" style=\"background-color: #ffffff ;\">\n" +
                             "            <%--                <div class=\"feed\" id=\"feed1\">--%>\n" +
                             "        <%--            点赞--%>\n" +
-                            "          <a id=\"like" + share.sid + "\" href=\"javascript:updateLike('" + share.sid + "')\">" + isLiked(share.sid) + " " +   // 为作区分，点赞按钮的超链接的id取名为like+sid
+                            "          <a style=\"display: block;width:30px\" id=\"like" + share.sid + "\" href=\"javascript:updateLike('" + share.sid + "')\">" + isLiked(share.sid) + " </a>" + // 为作区分，点赞按钮的超链接的id取名为like+sid
                             "        <%--                评论--%>\n" +
-                            "            <div style=\"display: inline-block;margin-top: 3px;margin-left: 35px;position: absolute;z-index: 1\"><img\n" +
+                            "            <div style=\"display: inline-block;margin-top: -2px;margin-left: 35px;position: absolute;z-index: 1\"><img\n" +
                             "                    src=\"images/评论%20(2).png\"></div>\n" +
                             "        <%--                分享--%>\n" +
-                            "            <div style=\"margin-top:6px;margin-left: 77px\"><img src=\"images/分享%20(3).png\"></div>\n" +
+                            "            <div style=\"margin-top:2px;margin-left: 77px\"><img src=\"images/分享%20(3).png\"></div>\n" +
                             // 收藏
                             "            <a id=\"" + share.sid + "\" href=\"javascript:updateKeep('" + share.sid + "')\"><div id=\"keep\" style=\"float: right;margin-right: -10px;margin-top:-30px\">" + iskeep(share.sid) + "</div>\n</a>" +
 
-                            "            <div id=\"likesCount"+share.sid+"\" class=\"likeCount\" style=\"width: 30px;margin-left: -5px;margin-top: 2px\">"+getLikesCount(share.sid)+"</div>\n" +
+                            "            <div id=\"likesCount" + share.sid + "\" class=\"likeCount\" style=\"width: 30px;margin-left: -5px;margin-top: 2px\">" + getLikesCount(share.sid) + "</div>\n" +
                             "\n" +
                             "          <div  style=\"margin-left: 15px;margin-top: -23px;float: left\"><b>次赞</b></div>\n" +
                             "                <div></div>\n" +
-                            "<%--                            </div>--%>\n" +
-                            "\n" +
+                            "  <div style=\"margin-top: 2px\" class=\"row\"><h5 style=\"display: inline-block;margin-left: 10px;font-weight: 600\">" + userInfoList.uname + "</h5><h5 style=\"display: inline-block\">&nbsp;" + share.stext + "</h5></span> </div>\n" +
+                            "                    <a href=\"#\" style=\"margin-left: -5px;color: #8c8c8c\">查看全部评论</a>" +
+
                             "        </div>\n" +
                             "    </div>";
                         $('#sharePanel').append(s1 + s2);
+
 
                     })
 
@@ -394,8 +448,8 @@
     // 点赞按钮初始状态
     function isLiked(Lsid) {
         var flag = false;
-        var liked = "<div class=\"heart heartAnimation\" style=\"margin-top:-25px;margin-left:10px;display:inline-block;position:absolute;z-index: 0;\" id=\"likeOrUnlike\" rel=\"like\"></div>";
-        var unLiked = "<div class=\"heart \" style=\"margin-top:-25px;margin-left:10px;display:inline-block;position:absolute;z-index:0;\" id=\"likeOrUnlike\" rel=\"unlike\"></div>";
+        var liked = "<div class=\"heart heartAnimation\" style=\"margin-top:-30px;margin-left:10px;display:inline-block;position:absolute;z-index:0;\" id=\"likeOrUnlike\" rel=\"like\"></div>";
+        var unLiked = "<div class=\"heart \" style=\"margin-top:-30px;margin-left:10px;display:inline-block;position:absolute;z-index:0;\" id=\"likeOrUnlike\" rel=\"unlike\"></div>";
         $.ajax({
             url: "IsLikedServlet",
             dataType: "text",
@@ -417,58 +471,58 @@
             return unLiked;
         }
     }
-    
- // 修改点赞按钮状态
+
+    // 修改点赞按钮状态
     function updateLike(Lsid) {
         console.log("a");
-        var a = "#like"+Lsid+" #likeOrUnlike";
-        var flag =  0; // 0代表没点赞取消点赞 1代表点赞";
+        var a = "#like" + Lsid + " #likeOrUnlike";
+        var flag = 0; // 0代表没点赞取消点赞 1代表点赞";
         var status = $(a).attr("rel");
-    console.log(status);
+        console.log(status);
         $(a).css("background-position", "");
-        if(status === 'unlike'){  // 如果原来没点赞，执行点赞操作
+        if (status === 'unlike') {  // 如果原来没点赞，执行点赞操作
             flag = 1;
             $.ajax({
-                url:"UpdateLikesServlet",
-                type:"post",
-                dataType:"text",
-                data:{flag:flag,Lsid:Lsid,Luid:Kuid},
-                success:function (insertStatus) {
-                    if(insertStatus === "true"){
+                url: "UpdateLikesServlet",
+                type: "post",
+                dataType: "text",
+                data: {flag: flag, Lsid: Lsid, Luid: Kuid},
+                success: function (insertStatus) {
+                    if (insertStatus === "true") {
                         $(a).addClass("heartAnimation").attr("rel", "like");
-                        $("#likesCount"+Lsid).html(getLikesCount(Lsid));
+                        $("#likesCount" + Lsid).html(getLikesCount(Lsid));
 
 
-                    }else {
+                    } else {
                         console.log("添加点赞失败!");
                     }
                 },
                 error: function () {
-            alert("error")
+                    alert("error")
                 }
             });
 
 
-        }else {  // 执行取消点赞操作
+        } else {  // 执行取消点赞操作
             flag = 0;
             $.ajax({
-                url:"UpdateLikesServlet",
-                type:"post",
-                async:false,
-                dataType:"text",
-                data:{flag:flag,Lsid:Lsid,Luid:Kuid},
-                success:function (insertStatus) {
-                    if(insertStatus === "true"){
+                url: "UpdateLikesServlet",
+                type: "post",
+                async: false,
+                dataType: "text",
+                data: {flag: flag, Lsid: Lsid, Luid: Kuid},
+                success: function (insertStatus) {
+                    if (insertStatus === "true") {
                         $(a).removeClass("heartAnimation").attr("rel", "unlike");
                         $(a).css("background-position", "left");
-                        $("#likesCount"+Lsid).html(getLikesCount(Lsid));
-                    }else {
+                        $("#likesCount" + Lsid).html(getLikesCount(Lsid));
+                    } else {
                         console.log("取消点赞失败!");
                     }
 
                 },
-                error: function() {
-                    alert( "error");
+                error: function () {
+                    alert("error");
                 }
             });
 
@@ -479,25 +533,24 @@
 
     function getLikesCount(Lsid) {
         var count;
-         $.ajax({
-             url:"LikesCountServlet",
-             dataType:"text",
-             type:"post",
-             data:{Lsid:Lsid},
-             async:false,
-             success: function (likesCount) {
-                 count = likesCount
-             // $("#likescount"+Lsid).html(likesCount);
-             },
-             error: function () {
-                 console.log("查询赞数失败")
-             }
-         });
-         console.log("count",count);
-         return count;
+        $.ajax({
+            url: "LikesCountServlet",
+            dataType: "text",
+            type: "post",
+            data: {Lsid: Lsid},
+            async: false,
+            success: function (likesCount) {
+                count = likesCount
+                // $("#likescount"+Lsid).html(likesCount);
+            },
+            error: function () {
+                console.log("查询赞数失败")
+            }
+        });
+        console.log("count", count);
+        return count;
 
     }
-
 
 
 </script>

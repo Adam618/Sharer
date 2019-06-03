@@ -17,7 +17,13 @@
     </filter-mapping>
 
     <context-param>
-        <param-name>path</param-name>
+<!--        此路径用来存放用户发的动态图片-->
+        <param-name>sharePath</param-name>
         <param-value>http://localhost:8080/shareImg/</param-value>
+    </context-param>
+    <context-param>
+<!--         此路径用来存放用户头像-->
+        <param-name>userPath</param-name>
+        <param-value>http://localhost:8080/userImg/</param-value>
     </context-param>
 </web-app>
