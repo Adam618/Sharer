@@ -24,6 +24,16 @@
     <script src="js/transition.js"></script>
 
     <style>
+        /*#commentText:focus {*/
+        /*    outline: none;*/
+        /*    border-color: #cfdc00;*/
+        /*    box-shadow: 0 0 5px rgba(207, 220, 0, 0.4);*/
+        /*    border-radius: 5px;*/
+        /*}*/
+        [placeholder~="添加评论..."]:focus {   outline: none;
+            border-color: #cfdc00;
+            box-shadow: 0 0 5px rgba(207, 220, 0, 0.4);
+            border-radius: 5px;}
         .panel {
             border-radius: 2px
         }
@@ -172,11 +182,14 @@
                 <div><h5 style="color: #8c8c8c">为你推荐</h5></div>
 
                 <div style="margin-top: 13px">
-                    <h5 style="color: #8c8c8c">你的关注用户动态会显示在这里哦&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
-                        &nbsp; </h5>
+<%--                    <h5 style="color: #8c8c8c">你的关注用户动态会显示在这里哦&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;--%>
+<%--                        &nbsp; </h5>--%>
+                <img  style="width: 280px;height: 170px;margin-left: -10px" src="images/FI@~G0O7IHV@%7D1H$Y5_QN)A.png">
                 </div>
+                <div></div>
 
             </div>
+
         </div>
 
 
@@ -212,7 +225,7 @@
 
 
                     $.each(shareList, function (index, share) {
-                         csid = share.sid ;
+                        csid = share.sid;
                         // 可以在这对发此条动态的用户进行查询,应该要改成同步的
                         var userInfoList = {}; // 用userInfoList来接收用户的数据
                         $.ajax({
@@ -289,56 +302,49 @@
                             "            <div id=\"collapseOne" + share.sid + "\" class=\" collapse \">\n" +
                             "            </div><div></div>"; // 这里包括一个面板的div
 
+                        let s5 = "<hr><div><input id='commentText"+share.sid+"' type='text'  style='border: none;margin-top: -10px;'  placeholder='添加评论...'/>" +
+                            "<h5 id='commitComment' onclick='commitComment("+share.sid+")' style='cursor:pointer;color: #3897f0;float: right;margin-top: 0px '>发布</h5></div>"
 
 
+                        $('#sharePanel').append(s1 + s2 + s3 + s4 + s5);
 
-                        //
-                        // var s3 = "<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"collapse\" \n" +
-                        //     "\t\tdata-target=\"#demo\">\n" +
-                        //     "\t简单的可折叠组件\n" +
-                        //     "</button>\n" +
-                        //     "\n" +
-                        //     "<div id=\"demo\" class=\"collapse in\">\n" +
-                        //     "\tNihil anim keffiyeh helvetica, craft beer labore wes anderson \n" +
-                        //     "\tcred nesciunt sapiente ea proident. Ad vegan excepteur butcher \n" +
-                        //     "\tvice lomo.\n" +
-                        //     "</div>";
-                        $('#sharePanel').append(s1 + s2 + s3 + s4);
-                        $.ajax({  // 请求所有评论
-                            url:"CS",
-                            type:"POST",
-                            dataType:"json",
-                            data:{item:1,sid:csid},
-                            async:false,
-                            success:function (commentArray) {
+                        (function getComment() {
+                            $.ajax({  // 请求所有评论
+                                url: "CS",
+                                type: "POST",
+                                dataType: "json",
+                                data: {item: 1, sid: csid},
+                                async: false,
+                                success: function (commentArray) {
 
-                                console.log(commentArray);
-                                $.each(commentArray, function (index, comment){
-                                     var cname ;  // 评论者的名称
-                                    $.ajax ({
-                                        url:"CS",
-                                        type:"POST",
-                                        async:false,
-                                        // dataType:"text",
-                                        data:{item: 2,cuid:comment.cuid},
-                                        success:function (uname) {
-                                        cname = uname;
-                                        },
-                                        error: function () {
-                                            console.log("获取评论者的名称出错！")
-                                        }
+                                    console.log(commentArray);
+                                    $.each(commentArray, function (index, comment) {
+                                        var cname;  // 评论者的名称
+                                        $.ajax({
+                                            url: "CS",
+                                            type: "POST",
+                                            async: false,
+                                            // dataType:"text",
+                                            data: {item: 2, cuid: comment.cuid},
+                                            success: function (uname) {
+                                                cname = uname;
+                                            },
+                                            error: function () {
+                                                console.log("获取评论者的名称出错！")
+                                            }
+                                        });
+
+                                        $("#collapseOne" + csid).append("<div style=\"margin-top: 2px\" class=\"row\"><h5 style=\"display: inline-block;margin-left: 10px;font-weight: 600\">" + cname + ":</h5><h5 style=\"display: inline-block\">&nbsp;" + comment.ctext + "</h5></div>");
                                     });
 
-                                    $("#collapseOne"+csid).append("<div style=\"margin-top: 2px\" class=\"row\"><h5 style=\"display: inline-block;margin-left: 10px;font-weight: 600\">"+cname+"</h5><h5 style=\"display: inline-block\">&nbsp;"+comment.ctext+"</h5></div>");
-                                });
 
+                                },
+                                error: function () {
+                                    alert("获取评论出错！")
+                                }
 
-                            },
-                            error: function () {
-                                alert("获取评论出错！")
-                            }
-
-                        });
+                            });
+                        })()
 
                     }); // 动态列表遍历一次后也就是一条动态生成后，再生成评论
 
@@ -360,10 +366,13 @@
             if (itemClass === "panel-collapse collapse") {
                 $(itemHref).attr("class", "panel-collapse collapse in").css("height", "auto");
 
+                $(this).text("收起所有评论")
             } else {
                 $(itemHref).attr("class", "panel-collapse collapse").css("height", "0px");
 
+                $(this).text("查看所有评论")
             }
+
             return false;//停止运行bootstrap自带的函数
         });
 
@@ -615,6 +624,33 @@
         return count;
 
     }
+function commitComment(csid){  // 发表评论功能
+
+    $.ajax({
+        url:"CS",
+        async:false,
+        type:"POST",
+        data:{cuid:Kuid,csid:csid,item:3,text:$("#commentText"+csid).val()},
+        dataType:"text",
+        success:function (num) {  // 返回受影响的函数
+        var a = Number(num);
+        if (a>0){
+            console.log("giao");
+            var cname = "${sessionScope.user.uname}";
+            $("#collapseOne" + csid).prepend("<div style=\"margin-top: 2px\" class=\"row\"><h5 style=\"display: inline-block;margin-left: 10px;font-weight: 600\">" + cname+ ":</h5><h5 style=\"display: inline-block\">&nbsp;" + $("#commentText"+csid).val() + "</h5></div>");
+        }
+
+        },
+        error: function () {
+            alert("插入动态失败!")
+        }
+    })
+
+}
+
+
+
+
 
 
 </script>

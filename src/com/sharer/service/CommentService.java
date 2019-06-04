@@ -1,6 +1,9 @@
 package com.sharer.service;
 
+
 import com.sharer.dao.CommentDao;
+import com.sharer.entity.Comment;
+import com.sharer.util.TimeUtil;
 
 import java.util.List;
 
@@ -12,10 +15,10 @@ public class CommentService {
         return CommentDao.getComments(sid);
     }
     //增加一条评论
-//    public static int insertComment(int cuid,int csid,String text){
-//        String time = TimeUtil.getCurrentTime();
-//        return CommentDao.insert(new Comment(cuid,csid,time,text));
-//    }
+    public static int insertComment(int cuid,int csid,String text){
+        String time = TimeUtil.getCurrentTime();
+        return CommentDao.insert(new Comment(cuid,csid,time,text));
+    }
 //    //获取某个动态的评论数
 //    public static int getCommentNumber(int sid){
 //        return CommentDao.getCommentNumber(sid);

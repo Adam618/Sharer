@@ -12,24 +12,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 @WebServlet("/CS")
 //item 为1获取某个文章的所有评论,为2判断用户是否给某个评论点赞了,3代表给评论点赞,
 // 4代表取消评论赞,5获取评论点赞数,6添加评论,7获取动态的评论数
 public class CommentServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp){
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         resp.setContentType("text/html;charset=utf-8");
 
-        int item,sid;
+        int item, sid;
+        PrintWriter out = null;
 
         item = Integer.parseInt(req.getParameter("item"));
-        switch (item){
+        switch (item) {
             case 1:
                 sid = Integer.parseInt(req.getParameter("sid"));
                 List<Comment> commentList = CommentService.getComments(sid);
 
-                JSONArray commentArray= JSONArray.parseArray(JSON.toJSONString(commentList));
+                JSONArray commentArray = JSONArray.parseArray(JSON.toJSONString(commentList));
                 try {
                     resp.getWriter().println(commentArray);
                 } catch (IOException e) {
@@ -37,8 +39,8 @@ public class CommentServlet extends HttpServlet {
                 }
                 break;
             case 2: //根据cuid获取用户名称
-              int   cuid = Integer.parseInt(req.getParameter("cuid"));
-                User user =  UserService.searchUserById(cuid);
+                int cuid = Integer.parseInt(req.getParameter("cuid"));
+                User user = UserService.searchUserById(cuid);
                 String uname = user.getUname();
                 try {
                     resp.getWriter().write(uname);
@@ -66,13 +68,17 @@ public class CommentServlet extends HttpServlet {
 //                cid = Integer.parseInt(req.getParameter("cid"));
 //                int num = ThumbsService.getThumbsNumber(cid);
 //                JsonUtil.toJsonAndWrite(num,out);break;
-//            case 6:
-//                int cuid = Integer.parseInt(req.getParameter("cuid"));
-//                int csid = Integer.parseInt(req.getParameter("csid"));
-//                String text = req.getParameter("text");
-//                int n = CommentService.insertComment(cuid,csid,text);
-//                JsonUtil.toJsonAndWrite(n,out);
-//                break;
+            case 3:
+                cuid = Integer.parseInt(req.getParameter("cuid"));
+                int csid = Integer.parseInt(req.getParameter("csid"));
+                String text = req.getParameter("text");
+                int n = CommentService.insertComment(cuid, csid, text);
+                System.out.println("c插入评论"+n);
+                try {
+                    resp.getWriter().println(n);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 //            case 7:
 //                sid = Integer.parseInt(req.getParameter("sid"));
 //                num = CommentService.getCommentNumber(sid);
