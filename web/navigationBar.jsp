@@ -15,12 +15,12 @@
         <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
         <style>
-            #logo{max-width: 200px;max-height: 50px;margin-top: -15px;}
+            #logo{max-width: 220px;max-height: 60px;margin-top: -10px;}
 
         </style>
     </head>
     <body>
-        <nav class="navbar navbar-default" >
+        <nav class="navbar navbar-default" style="background-color: white" >
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
@@ -31,7 +31,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="#">
-                        <img alt="Brand" src="profilePicture/logo_home.png" id="logo">
+                        <img alt="Brand" src="profilePicture/logo.jpg" id="logo">
                     </a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->

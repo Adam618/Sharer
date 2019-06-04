@@ -20,6 +20,8 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrapValidator.js"></script>
     <script src="js/dropdown.js"></script>
+    <script src="js/collapse.js"></script>
+    <script src="js/transition.js"></script>
 
     <style>
         .panel {
@@ -29,6 +31,7 @@
         body {
             background-color: #fafafa
         }
+
         #currentUserImg {
             height: 48px;
             width: 48px;
@@ -36,17 +39,18 @@
             margin-top: 10px;
             display: inline-block;
         }
+
         #currentUserName {
             display: inline-block;
             font-weight: bold;
             margin-left: 9px;
             margin-top: 20px;
         }
-        #default {
+
+        #default, #default1 {
             margin-left: 15px;
             margin-top: 20px;
         }
-
 
 
     </style>
@@ -60,7 +64,7 @@
 
     <div class="col-md-5  col-sm-5 col-xs-10 ">
         <%--        发表动态部分开始--%>
-        <div class="row thumbnail" style="margin-bottom: 40px;background-color:white">
+        <div class="row " style="margin-bottom: 40px;background-color:white">
             <div style="margin-right: 0;margin-left: 0;margin-top: 20px;">
                 <form role="form" style="">
                     <div class="form-group">
@@ -73,15 +77,15 @@
 
             <div style="margin-top: -15px">
                 <input style="position: absolute;opacity: 0;display: none" id="thisFile" type="file">
-                <img style="float: left;margin-left:2px;margin-top: 5px"
+                <img style="float: left;margin-left:2px;margin-top: 8px"
                      id="browse" src="images/图片.png" alt="选择图片">
-                <input type="text" id="showname" style="margin-left: 4px;margin-top: 5px;width: 95px">
-                <button type="button" class="btn btn-info btn-sm" id="uploadBtn"
+                <input type="text" id="showname" style="margin-left: 4px;margin-top: 8px;width: 95px">
+                <button type="button" class="btn btn-info " id="uploadBtn"
                         style="float: right;margin-top: 5px;margin-right: 3px;">发表
                 </button>
                 <%--                <label for="visibleSelected">可见范围</label>--%>
                 <select id="visibleSelected"
-                        style="float: right;margin-right: 10px;margin-top: 5px;height: 28px;width: 95px">
+                        style="float: right;margin-right: 10px;margin-top: 8px;height: 28px;width: 95px">
                     <option selected="selected" value="0">所有人可见</option>
                     <option value="1">仅自己可见</option>
                 </select>
@@ -146,40 +150,45 @@
 
         <%--    </div>--%>
     </div>
-        <%--    这个div用来存放响应隐藏面板--%>
+    <%--    这个div用来存放响应隐藏面板--%>
 
-        <div class="col-md-3 col-sm-3  hidden-xs">
-           <div class="row" style="position: fixed;" >
-               <img class="img-circle" id="currentUserImg" src="${initParam.userPath}${sessionScope.user.uimg}">
-               <h5 id="currentUserName" style="display: inline-block">${sessionScope.user.uname}</h5>
-               <div class="row thumbnail" style="padding: 10px" id="default">
+    <div class="col-md-3 col-sm-3  hidden-xs">
+        <div class="row" style="position: fixed;">
+            <img class="img-circle" id="currentUserImg" src="${initParam.userPath}${sessionScope.user.uimg}">
+            <h5 id="currentUserName" style="display: inline-block">${sessionScope.user.uname}</h5>
+            <div class="row thumbnail" style="padding: 10px" id="default1">
 
-                   <div><h5 style="color: #8c8c8c">快拍</h5></div>
+                <div><h5 style="color: #8c8c8c">快拍</h5></div>
 
-                   <div style="margin-top: 13px">
-                       <h5 style="color: #8c8c8c">你的关注用户动态会显示在这里哦&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </h5>
-                   </div>
+                <div style="margin-top: 13px">
+                    <h5 style="color: #8c8c8c">你的关注用户动态会显示在这里哦&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+                        &nbsp; </h5>
+                </div>
 
-               </div>
+            </div>
 
-               <div class="row thumbnail" style="padding: 10px" id="default">
+            <div class="row thumbnail" style="padding: 10px" id="default">
 
-                   <div><h5 style="color: #8c8c8c">为你推荐</h5></div>
+                <div><h5 style="color: #8c8c8c">为你推荐</h5></div>
 
-                   <div style="margin-top: 13px">
-                       <h5 style="color: #8c8c8c">你的关注用户动态会显示在这里哦&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </h5>
-                   </div>
+                <div style="margin-top: 13px">
+                    <h5 style="color: #8c8c8c">你的关注用户动态会显示在这里哦&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+                        &nbsp; </h5>
+                </div>
 
-               </div>
-           </div>
-
-
+            </div>
         </div>
-        <div class="col-md-2 col-sm-2 col-xs-1 "></div>
-
 
 
     </div>
+
+    <div class="col-md-2 col-sm-2 col-xs-1 ">
+
+
+    </div>
+
+
+</div>
 </body>
 
 <script>
@@ -187,6 +196,7 @@
     var start = 1;
     var path = "${applicationScope.path}";
     $(document).ready(function () {
+
         // 初始化界面
         created();
 
@@ -264,13 +274,39 @@
                             "            <div id=\"likesCount" + share.sid + "\" class=\"likeCount\" style=\"width: 30px;margin-left: -5px;margin-top: 2px\">" + getLikesCount(share.sid) + "</div>\n" +
                             "\n" +
                             "          <div  style=\"margin-left: 15px;margin-top: -23px;float: left\"><b>次赞</b></div>\n" +
-                            "                <div></div>\n" +
-                            "  <div style=\"margin-top: 2px\" class=\"row\"><h5 style=\"display: inline-block;margin-left: 10px;font-weight: 600\">" + userInfoList.uname + "</h5><h5 style=\"display: inline-block\">&nbsp;" + share.stext + "</h5></span> </div>\n" +
-                            "                    <a href=\"#\" style=\"margin-left: -5px;color: #8c8c8c\">查看全部评论</a>" +
+                            "                <div></div>\n";
 
-                            "        </div>\n" +
-                            "    </div>";
-                        $('#sharePanel').append(s1 + s2);
+
+                        let s3 = "<div style=\"margin-top: 2px\" class=\"row\"><h5 style=\"display: inline-block;margin-left: 10px;font-weight: 600\">" + userInfoList.uname + "</h5><h5 style=\"display: inline-block\">&nbsp;" + share.stext + "</h5></span> </div>\n";
+
+
+                        let s4 = "          <div>" +
+                            "<a id=\"fold" + share.sid + "\" data-toggle=\"collapse\" style='margin-left: -5px;color: #8c8c8c;text-decoration: none' data-parent=\"#accordion\"\n" +
+                            "                       href=\"#collapseOne" + share.sid + " \" class=\"myCollapse\">\n" +
+                            "                        查看全部评论\n" +
+                            "                    </a>\n" +
+                            "\n" +
+                            "\n" +
+                            "            <div id=\"collapseOne" + share.sid + "\" class=\" collapse \">\n" +
+                            "\n" +
+                            "                    Nihil anim keffiyeh helvetica, craft beer labore wes anderson\n" +
+                            "                    cred nesciunt sapiente ea proident. Ad vegan excepteur butcher\n" +
+                            "                    vice lomo.\n" +
+                            "\n" +
+                            "            </div><div></div>"; // 这里包括一个面板的div
+
+                        //
+                        // var s3 = "<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"collapse\" \n" +
+                        //     "\t\tdata-target=\"#demo\">\n" +
+                        //     "\t简单的可折叠组件\n" +
+                        //     "</button>\n" +
+                        //     "\n" +
+                        //     "<div id=\"demo\" class=\"collapse in\">\n" +
+                        //     "\tNihil anim keffiyeh helvetica, craft beer labore wes anderson \n" +
+                        //     "\tcred nesciunt sapiente ea proident. Ad vegan excepteur butcher \n" +
+                        //     "\tvice lomo.\n" +
+                        //     "</div>";
+                        $('#sharePanel').append(s1 + s2 + s3 + s4);
 
 
                     })
@@ -284,24 +320,19 @@
         }
 
 
-        // $('body').on("click", '.heart', function () {
-        //
-        //     var A = $(this).attr("id");
-        //     var B = A.split("like");
-        //     var messageID = B[1];
-        //     var C = parseInt($("#likeCount" + messageID).html());
-        //     $(this).css("background-position", "")
-        //     var D = $(this).attr("rel");
-        //
-        //     if (D === 'like') {
-        //         $("#likeCount" + messageID).html(C + 1);
-        //         $(this).addClass("heartAnimation").attr("rel", "unlike");
-        //     } else {
-        //         $("#likeCount" + messageID).html(C - 1);
-        //         $(this).removeClass("heartAnimation").attr("rel", "like");
-        //         $(this).css("background-position", "left");
-        //     }
-        // });
+        $(".myCollapse").click(function () {// 修复折叠面板的bug
+            var itemHref = $(this).attr("href");
+            // console.log( $(this).attr("id"));
+            var itemClass = $(itemHref).attr("class");
+            if (itemClass === "panel-collapse collapse") {
+                $(itemHref).attr("class", "panel-collapse collapse in").css("height", "auto");
+
+            } else {
+                $(itemHref).attr("class", "panel-collapse collapse").css("height", "0px");
+
+            }
+            return false;//停止运行bootstrap自带的函数
+        });
 
         // 展示图片路径
         $('#browse').click(function makeThisFile() {
