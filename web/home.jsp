@@ -201,6 +201,7 @@
         created();
 
         function created() {
+            var csid;
             $.ajax({
                 url: 'sss',
                 type: 'GET',
@@ -211,6 +212,7 @@
 
 
                     $.each(shareList, function (index, share) {
+                         csid = share.sid ;
                         // 可以在这对发此条动态的用户进行查询,应该要改成同步的
                         var userInfoList = {}; // 用userInfoList来接收用户的数据
                         $.ajax({
@@ -279,21 +281,16 @@
 
                         let s3 = "<div style=\"margin-top: 2px\" class=\"row\"><h5 style=\"display: inline-block;margin-left: 10px;font-weight: 600\">" + userInfoList.uname + "</h5><h5 style=\"display: inline-block\">&nbsp;" + share.stext + "</h5></span> </div>\n";
 
-
                         let s4 = "          <div>" +
                             "<a id=\"fold" + share.sid + "\" data-toggle=\"collapse\" style='margin-left: -5px;color: #8c8c8c;text-decoration: none' data-parent=\"#accordion\"\n" +
                             "                       href=\"#collapseOne" + share.sid + " \" class=\"myCollapse\">\n" +
                             "                        查看全部评论\n" +
-                            "                    </a>\n" +
-                            "\n" +
-                            "\n" +
+                            "</a>\n" +
                             "            <div id=\"collapseOne" + share.sid + "\" class=\" collapse \">\n" +
-                            "\n" +
-                            "                    Nihil anim keffiyeh helvetica, craft beer labore wes anderson\n" +
-                            "                    cred nesciunt sapiente ea proident. Ad vegan excepteur butcher\n" +
-                            "                    vice lomo.\n" +
-                            "\n" +
                             "            </div><div></div>"; // 这里包括一个面板的div
+
+
+
 
                         //
                         // var s3 = "<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"collapse\" \n" +
@@ -307,15 +304,51 @@
                         //     "\tvice lomo.\n" +
                         //     "</div>";
                         $('#sharePanel').append(s1 + s2 + s3 + s4);
+                        $.ajax({  // 请求所有评论
+                            url:"CS",
+                            type:"POST",
+                            dataType:"json",
+                            data:{item:1,sid:csid},
+                            async:false,
+                            success:function (commentArray) {
+
+                                console.log(commentArray);
+                                $.each(commentArray, function (index, comment){
+                                     var cname ;  // 评论者的名称
+                                    $.ajax ({
+                                        url:"CS",
+                                        type:"POST",
+                                        async:false,
+                                        // dataType:"text",
+                                        data:{item: 2,cuid:comment.cuid},
+                                        success:function (uname) {
+                                        cname = uname;
+                                        },
+                                        error: function () {
+                                            console.log("获取评论者的名称出错！")
+                                        }
+                                    });
+
+                                    $("#collapseOne"+csid).append("<div style=\"margin-top: 2px\" class=\"row\"><h5 style=\"display: inline-block;margin-left: 10px;font-weight: 600\">"+cname+"</h5><h5 style=\"display: inline-block\">&nbsp;"+comment.ctext+"</h5></div>");
+                                });
 
 
-                    })
+                            },
+                            error: function () {
+                                alert("获取评论出错！")
+                            }
+
+                        });
+
+                    }); // 动态列表遍历一次后也就是一条动态生成后，再生成评论
 
                 },
                 error: function () {
                     alert("error!")
                 }
+
             });
+
 
         }
 
