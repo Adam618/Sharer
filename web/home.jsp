@@ -244,9 +244,9 @@
                         });
 
 
-                        console.log('userInfoList', userInfoList);
-                        console.log('shareTest', share.stext);
-                        console.log('shareTest', share.sid);
+                        // console.log('userInfoList', userInfoList);
+                        // console.log('shareTest', share.stext);
+                        // console.log('shareTest', share.sid);
                         var s1 = "    <div class=\"panel panel-default\" style=\"margin-bottom: 0px;\">\n" +
                             "        <!-- Default panel contents -->\n" +
                             "        <div class=\"panel-heading\" style=\"background-color: #ffffff\">\n" +
@@ -317,7 +317,7 @@
                                 async: false,
                                 success: function (commentArray) {
 
-                                    console.log(commentArray);
+                                    // console.log(commentArray);
                                     $.each(commentArray, function (index, comment) {
                                         var cname;  // 评论者的名称
                                         $.ajax({
@@ -401,9 +401,18 @@
             if (scrolltop + widowheight + 1 >= scrollheight) {
                 start++;
                 created();
-                console.log('start' + start);
+                // console.log('start' + start);
             }
         });
+
+ // 滚动到顶部刷新
+
+        // $(window).scroll(function(){
+        //     if($(document).scrollTop()==0){
+        //         console.log("hh")
+        //     created()
+        //     }
+        // });
         $('#uploadBtn').click(function btu() {
             start = 1;
             // var name=$("#name").val();
@@ -414,8 +423,8 @@
             fordata.append("Svisible", Svisable);
             fordata.append("Stext", Stext);
             fordata.append("file", file);
-            console.log(file);
-            console.log('visable', Svisable);
+            // console.log(file);
+            // console.log('visable', Svisable);
             $.ajax({
                 url: "uss",
                 data: fordata,
@@ -438,7 +447,7 @@
 // 查询收藏按钮初始状态
         function iskeep(Ksid) {
             var flag = false;
-            console.log("run");
+            // console.log("run");
             var unSelected = "<img title=\"收藏\" id=\"unSelected\" src=\"images/星星线描%20(1).png\">";
             var selected = "<img title=\"取消收藏\" id=\"selected\" src=\"images/星星_选中.png\">";
             $.ajax({
@@ -448,7 +457,7 @@
                 data: {Kuid: Kuid, Ksid: Ksid},
                 dataType: 'text',
                 success: function (status) {
-                    console.log('status', status);
+                    // console.log('status', status);
 
                     if (status === "true") {
                         // $('#keep').html(selected);
@@ -494,7 +503,7 @@
                 }
             });
 
-            console.log("存在选中！");
+            // console.log("存在选中！");
         } else { // 原来不选中点击变为选中，收藏
             flag = 1;
             $.ajax({
@@ -547,11 +556,11 @@
 
     // 修改点赞按钮状态
     function updateLike(Lsid) {
-        console.log("a");
+        // console.log("a");
         var a = "#like" + Lsid + " #likeOrUnlike";
         var flag = 0; // 0代表没点赞取消点赞 1代表点赞";
         var status = $(a).attr("rel");
-        console.log(status);
+        // console.log(status);
         $(a).css("background-position", "");
         if (status === 'unlike') {  // 如果原来没点赞，执行点赞操作
             flag = 1;
@@ -620,7 +629,7 @@
                 console.log("查询赞数失败")
             }
         });
-        console.log("count", count);
+        // console.log("count", count);
         return count;
 
     }
@@ -635,7 +644,7 @@ function commitComment(csid){  // 发表评论功能
         success:function (num) {  // 返回受影响的函数
         var a = Number(num);
         if (a>0){
-            console.log("giao");
+            // console.log("giao");
             var cname = "${sessionScope.user.uname}";
             $("#collapseOne" + csid).prepend("<div style=\"margin-top: 2px\" class=\"row\"><h5 style=\"display: inline-block;margin-left: 10px;font-weight: 600\">" + cname+ ":</h5><h5 style=\"display: inline-block\">&nbsp;" + $("#commentText"+csid).val() + "</h5></div>");
         }
@@ -647,6 +656,9 @@ function commitComment(csid){  // 发表评论功能
     })
 
 }
+    if (document.documentElement.clientWidth < document.documentElement.offsetWidth-4){
+//执行相关脚本。
+    }
 
 
 

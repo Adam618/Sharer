@@ -18,7 +18,7 @@ public class FanServlet extends HttpServlet {
         int Uid = Integer.parseInt(req.getParameter("Uid"));
         List<User> list = FanService.getFan(Uid);
         String json = JSON.toJSON(list).toString();
-        System.out.println("json:"+json);
+//        System.out.println("json:"+json);
         resp.setContentType("text/html;charset=utf-8");
         try {
             resp.getWriter().write(json);  // 传递给ajax

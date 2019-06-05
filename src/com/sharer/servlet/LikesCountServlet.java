@@ -16,7 +16,7 @@ public class LikesCountServlet extends HttpServlet {
         response.setContentType("text/html;charset=utf-8");
      int Lsid = Integer.parseInt(request.getParameter("Lsid"));
      int likesCount = LikesService.getLikesCount(Lsid);
-     System.out.println("likecount"+likesCount);
+//     System.out.println("likecount"+likesCount);
      response.getWriter().write(likesCount+"");
     }
 

@@ -18,7 +18,7 @@ public class ShowUserServlet extends HttpServlet {
         User user = UserService.searchUserById(Suid); // 查询发此动态的用户信息
         response.setContentType("text/html;charset=utf-8");
         String userInfo = JSON.toJSONString(user);
-        System.out.println(userInfo);
+//        System.out.println(userInfo);
         response.getWriter().println(userInfo);
 
     }
